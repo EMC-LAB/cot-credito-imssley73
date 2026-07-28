@@ -778,20 +778,6 @@ CONFETI DE RESULTADO
 */
 
 function lanzarConfetiResultado() {
-
-    /*
-    Respetamos la preferencia del usuario
-    de reducir animaciones.
-    */
-
-    if (
-        window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches
-    ) {
-        return;
-    }
-
     const canvas =
         document.createElement("canvas");
 
@@ -799,7 +785,14 @@ function lanzarConfetiResultado() {
         "canvas-confeti-resultado";
 
     document.body.appendChild(canvas);
-
+    
+canvas.style.position = "fixed";
+canvas.style.inset = "0";
+canvas.style.width = "100vw";
+canvas.style.height = "100dvh";
+canvas.style.pointerEvents = "none";
+canvas.style.zIndex = "1000001";
+    
     const contexto =
         canvas.getContext("2d");
 
