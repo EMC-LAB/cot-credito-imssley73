@@ -2683,1088 +2683,375 @@ WHATSAPP FLOTANTE
 }
 
 /* ==================================
-VENTANA EMERGENTE DE RESULTADOS
+MODAL DE RESULTADOS — LIMPIO Y RESPONSIVE
 =================================== */
-
-.modal-resultado{
-    position:fixed;
-    inset:0;
-    z-index:6000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:28px;
-    overflow:hidden;
-}
-
-.modal-resultado.oculto{
-    display:none !important;
-}
-
-.modal-resultado-fondo{
-    position:absolute;
-    inset:0;
-    background:rgba(2,15,38,.82);
-    backdrop-filter:blur(7px);
-    cursor:pointer;
-}
-
-.modal-resultado-contenido{
-    position:relative;
-    z-index:2;
-    width:min(1180px, 100%);
-    max-height:92vh;
-    overflow-y:auto;
-    padding:42px;
-    border:1px solid rgba(255,255,255,.13);
-    border-radius:28px;
-    background:linear-gradient(
-        145deg,
-        #092f64,
-        #0d579e
-    );
-    box-shadow:0 35px 100px rgba(0,0,0,.48);
-}
-
-.modal-resultado-contenido::-webkit-scrollbar{
-    width:9px;
-}
-
-.modal-resultado-contenido::-webkit-scrollbar-thumb{
-    border-radius:30px;
-    background:rgba(255,255,255,.30);
-}
-
-.modal-resultado-cerrar{
-    position:sticky;
-    top:0;
-    float:right;
-    z-index:5;
-    width:46px;
-    height:46px;
-    margin:-15px -15px 0 15px;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:50%;
-    background:rgba(255,255,255,.13);
-    color:#ffffff;
-    font-size:21px;
-    cursor:pointer;
-    transition:.25s;
-}
-
-.modal-resultado-cerrar:hover{
-    background:#ffffff;
-    color:#0b3f7b;
-    transform:rotate(90deg);
-}
-
-
-/* ENCABEZADO DEL MODAL */
-
-.modal-resultado .resultado-encabezado{
-    clear:both;
-    margin:5px auto 38px;
-    text-align:center;
-}
-
-.modal-resultado .resultado-encabezado span{
-    color:#f2c94c;
-}
-
-.modal-resultado .resultado-encabezado h4{
-    margin-top:10px;
-    color:#ffffff;
-    font-size:44px;
-    line-height:1.15;
-}
-
-
-/* LOS DOS ESCENARIOS */
-
-.modal-resultado .resultado-bloque{
-    margin-top:25px;
-    padding:27px;
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:22px;
-    background:rgba(4,30,68,.35);
-    box-shadow:none;
-}
-
-.modal-resultado .resultado-bloque-titulo{
-    margin-bottom:24px;
-}
-
-.modal-resultado .resultados-grid-cuatro{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0,1fr));
-    gap:16px;
-}
-
-.modal-resultado .resultado-item{
-    min-height:135px;
-    padding:20px 14px;
-    border-radius:17px;
-    background:#f5f8fc;
-}
-
-
-/* BOTÓN FINAL */
-
-.modal-resultado .btn-whatsapp-resultado{
-    width:min(620px, 100%);
-    min-height:64px;
-    margin:28px auto 0;
-    padding:16px 22px;
-    border-radius:15px;
-    font-size:17px;
-    box-shadow:0 16px 35px rgba(0,0,0,.20);
-}
-
-.resultado-aviso-final{
-    max-width:720px;
-    margin:15px auto 0;
-    color:rgba(255,255,255,.76);
-    font-size:13px;
-    line-height:1.6;
-    text-align:center;
-}
-
-
-/* ANIMACIÓN SEGURA DEL MODAL */
-
-@keyframes mostrarFondoResultado{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-
-}
-
-@keyframes mostrarVentanaResultado{
-
-    from{
-        opacity:0;
-        transform:translateY(28px) scale(.97);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-}
-
-.modal-resultado:not(.oculto)
-.modal-resultado-fondo{
-    animation:mostrarFondoResultado .25s ease both;
-}
-
-.modal-resultado:not(.oculto)
-.modal-resultado-contenido{
-    animation:mostrarVentanaResultado .38s ease both;
-}
-
-
-/* TABLETA */
-
-@media(max-width:1000px){
-
-    .modal-resultado .resultados-grid-cuatro{
-        grid-template-columns:repeat(2, minmax(0,1fr));
-    }
-
-}
-
-
-/* CELULAR */
-
-@media(max-width:650px){
-
-    .modal-resultado{
-        padding:10px;
-        align-items:flex-end;
-    }
-
-    .modal-resultado-contenido{
-        width:100%;
-        max-height:94vh;
-        padding:25px 16px 28px;
-        border-radius:23px 23px 0 0;
-    }
-
-    .modal-resultado-cerrar{
-        width:42px;
-        height:42px;
-        margin:-7px -5px 0 10px;
-    }
-
-    .modal-resultado .resultado-encabezado{
-        margin-bottom:28px;
-    }
-
-    .modal-resultado .resultado-encabezado h4{
-        font-size:31px;
-    }
-
-    .modal-resultado .resultado-bloque{
-        padding:20px 14px;
-    }
-
-    .modal-resultado .resultado-bloque-titulo h4{
-        font-size:27px;
-    }
-
-    .modal-resultado .resultados-grid-cuatro{
-        grid-template-columns:1fr;
-    }
-
-    .modal-resultado .resultado-item{
-        min-height:110px;
-    }
-
-}
-/* ==================================================
-CORRECCIÓN RESPONSIVE DEL MODAL DE RESULTADOS
-Pegar al final de styles.css
-================================================== */
-
-/* Estructura general de la ventana */
-
-.modal-resultado-contenido{
-    width:min(1120px, calc(100vw - 32px));
-    max-height:92vh;
-    padding:38px;
-    overflow-x:hidden;
-}
-
-
-/* Encabezado principal */
-
-.modal-resultado .resultado-encabezado{
-    max-width:850px;
-    margin:0 auto 34px;
-    padding:0 55px;
-}
-
-.modal-resultado .resultado-encabezado h4{
-    margin:10px 0 0;
-    color:#ffffff;
-    font-size:clamp(34px, 4vw, 52px);
-    line-height:1.08;
-    text-align:center;
-}
-
-
-/* Bloques de resultados */
-
-.modal-resultado .resultado-bloque{
-    width:100%;
-    margin-top:22px;
-    padding:26px;
-}
-
-.modal-resultado .resultado-bloque-titulo{
-    display:grid;
-    grid-template-columns:58px minmax(0, 1fr);
-    align-items:start;
-    gap:18px;
-    margin-bottom:24px;
-}
-
-.modal-resultado .resultado-icono{
-    width:58px;
-    height:58px;
-    min-width:58px;
-}
-
-.modal-resultado .resultado-bloque-titulo span{
-    display:block;
-    margin-bottom:7px;
-    font-size:13px;
-    line-height:1.4;
-}
-
-.modal-resultado .resultado-bloque-titulo h4{
-    margin:0;
-    color:#ffffff;
-    font-size:clamp(25px, 3vw, 39px);
-    line-height:1.12;
-    overflow-wrap:normal;
-    word-break:normal;
-}
-
-.modal-resultado .resultado-bloque-titulo p{
-    margin-top:10px;
-    font-size:16px;
-    line-height:1.55;
-}
-
-
-/* Tarjetas de cantidades */
-
-.modal-resultado .resultados-grid-cuatro{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0, 1fr));
-    gap:15px;
-}
-
-.modal-resultado .resultado-item{
-    min-width:0;
-    min-height:130px;
-    padding:20px 12px;
-}
-
-.modal-resultado .resultado-item span{
-    font-size:14px;
-    line-height:1.4;
-}
-
-.modal-resultado .resultado-item strong{
-    font-size:clamp(20px, 2vw, 28px);
-    line-height:1.2;
-    overflow-wrap:anywhere;
-}
-
-
-/* TABLETA */
-
-@media(max-width:1000px){
-
-    .modal-resultado-contenido{
-        width:min(820px, calc(100vw - 24px));
-        padding:32px 24px;
-    }
-
-    .modal-resultado .resultados-grid-cuatro{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-    }
-
-}
-
-
-/* CELULAR */
-
-@media(max-width:650px){
-
-    .modal-resultado{
-        padding:0;
-        align-items:flex-end;
-    }
-
-    .modal-resultado-contenido{
-        width:100%;
-        max-height:96vh;
-        padding:22px 14px 28px;
-        border-radius:24px 24px 0 0;
-    }
-
-    .modal-resultado-cerrar{
-        position:absolute;
-        top:14px;
-        right:14px;
-        float:none;
-        margin:0;
-        width:42px;
-        height:42px;
-    }
-
-    .modal-resultado .resultado-encabezado{
-        margin:14px auto 28px;
-        padding:0 45px;
-    }
-
-    .modal-resultado .resultado-encabezado span{
-        font-size:12px;
-        letter-spacing:2px;
-    }
-
-    .modal-resultado .resultado-encabezado h4{
-        font-size:32px;
-        line-height:1.12;
-    }
-
-    .modal-resultado .resultado-bloque{
-        padding:20px 14px;
-        border-radius:18px;
-    }
-
-    .modal-resultado .resultado-bloque-titulo{
-        grid-template-columns:46px minmax(0, 1fr);
-        gap:13px;
-    }
-
-    .modal-resultado .resultado-icono{
-        width:46px;
-        height:46px;
-        min-width:46px;
-        font-size:20px;
-    }
-
-    .modal-resultado .resultado-bloque-titulo span{
-        font-size:11px;
-        letter-spacing:1.5px;
-    }
-
-    .modal-resultado .resultado-bloque-titulo h4{
-        font-size:25px;
-        line-height:1.15;
-    }
-
-    .modal-resultado .resultado-bloque-titulo p{
-        font-size:14px;
-    }
-
-    .modal-resultado .resultados-grid-cuatro{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:10px;
-    }
-
-    .modal-resultado .resultado-item{
-        min-height:112px;
-        padding:15px 9px;
-    }
-
-    .modal-resultado .resultado-item span{
-        font-size:12px;
-    }
-
-    .modal-resultado .resultado-item strong{
-        font-size:19px;
-    }
-
-    .modal-resultado .btn-whatsapp-resultado{
-        min-height:58px;
-        padding:14px;
-        font-size:15px;
-        text-align:center;
-    }
-
-}
-
-
-/* CELULARES MUY PEQUEÑOS */
-
-@media(max-width:390px){
-
-    .modal-resultado .resultado-encabezado h4{
-        font-size:28px;
-    }
-
-    .modal-resultado .resultado-bloque-titulo{
-        grid-template-columns:1fr;
-    }
-
-    .modal-resultado .resultado-bloque-titulo h4{
-        font-size:23px;
-    }
-
-    .modal-resultado .resultados-grid-cuatro{
-        grid-template-columns:1fr;
-    }
-
-}
-/* ==================================================
-AJUSTE DEFINITIVO DEL MODAL DE RESULTADOS
-================================================== */
 
 #resultadoSimulacion.modal-resultado{
     position:fixed !important;
-    inset:0 !important;
-
-    width:100vw !important;
-    max-width:none !important;
-    height:100vh !important;
-
-    margin:0 !important;
-    padding:24px !important;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    overflow:hidden;
-
-    z-index:99999 !important;
-}
-
-
-/* Fondo oscuro en toda la pantalla */
-
-#resultadoSimulacion .modal-resultado-fondo{
-    position:absolute !important;
     inset:0 !important;
     width:100% !important;
     height:100% !important;
-
-    background:rgba(2,15,38,.84);
-    backdrop-filter:blur(8px);
-}
-
-
-/* Ventana principal centrada y grande */
-
-#resultadoSimulacion .modal-resultado-contenido{
-    position:relative !important;
-    z-index:2;
-
-    width:min(1280px, calc(100vw - 60px)) !important;
-    max-width:1280px !important;
-    max-height:92vh;
-
-    margin:auto !important;
-    padding:40px;
-
-    overflow-x:hidden;
-    overflow-y:auto;
-
-    border-radius:28px;
-
-    background:linear-gradient(
-        145deg,
-        #092f64,
-        #0d579e
-    );
-
-    box-shadow:0 35px 100px rgba(0,0,0,.50);
-}
-
-
-/* Encabezado centrado */
-
-#resultadoSimulacion .resultado-encabezado{
-    width:100%;
-    max-width:900px;
-    margin:0 auto 36px;
-    padding:0 60px;
-    text-align:center;
-}
-
-#resultadoSimulacion .resultado-encabezado h4{
-    color:#ffffff;
-    font-size:clamp(36px,4vw,54px);
-    line-height:1.1;
-}
-
-
-/* Cada escenario usa todo el ancho */
-
-#resultadoSimulacion .resultado-bloque{
-    width:100% !important;
-    max-width:none !important;
-
-    margin:22px 0 0 !important;
-    padding:28px;
-
-    border-radius:22px;
-}
-
-
-/* Título del escenario */
-
-#resultadoSimulacion .resultado-bloque-titulo{
-    display:grid;
-    grid-template-columns:58px minmax(0,1fr);
-    align-items:start;
-
-    width:100%;
-    gap:18px;
-    margin-bottom:25px;
-}
-
-#resultadoSimulacion .resultado-bloque-titulo h4{
-    font-size:clamp(27px,3vw,40px);
-    line-height:1.12;
-}
-
-
-/* Cuatro resultados en computadora */
-
-#resultadoSimulacion .resultados-grid-cuatro{
-    width:100%;
-
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:16px;
-}
-
-#resultadoSimulacion .resultado-item{
-    min-width:0;
-    min-height:130px;
-}
-
-
-/* Ocultar correctamente */
-
-#resultadoSimulacion.modal-resultado.oculto{
-    display:none !important;
-}
-
-
-/* TABLETA */
-
-@media(max-width:1000px){
-
-    #resultadoSimulacion.modal-resultado{
-        padding:16px !important;
-    }
-
-    #resultadoSimulacion .modal-resultado-contenido{
-        width:calc(100vw - 32px) !important;
-        padding:32px 22px;
-    }
-
-    #resultadoSimulacion .resultados-grid-cuatro{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
-}
-
-
-/* CELULAR */
-
-@media(max-width:650px){
-
-    #resultadoSimulacion.modal-resultado{
-        padding:0 !important;
-        align-items:flex-end;
-    }
-
-    #resultadoSimulacion .modal-resultado-contenido{
-        width:100vw !important;
-        max-width:none !important;
-        max-height:95vh;
-
-        padding:24px 14px 28px;
-
-        border-radius:24px 24px 0 0;
-    }
-
-    #resultadoSimulacion .resultado-encabezado{
-        padding:0 45px;
-        margin-bottom:28px;
-    }
-
-    #resultadoSimulacion .resultado-encabezado h4{
-        font-size:31px;
-    }
-
-    #resultadoSimulacion .resultado-bloque{
-        padding:19px 13px;
-    }
-
-    #resultadoSimulacion .resultado-bloque-titulo{
-        grid-template-columns:46px minmax(0,1fr);
-        gap:12px;
-    }
-
-    #resultadoSimulacion .resultado-bloque-titulo h4{
-        font-size:24px;
-    }
-
-    #resultadoSimulacion .resultados-grid-cuatro{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        gap:10px;
-    }
-
-    #resultadoSimulacion .resultado-item{
-        min-height:110px;
-        padding:14px 8px;
-    }
-
-}
-
-
-/* CELULARES MUY ANGOSTOS */
-
-@media(max-width:380px){
-
-    #resultadoSimulacion .resultados-grid-cuatro{
-        grid-template-columns:1fr;
-    }
-
-}
-/* ==================================
-MODAL FUERA DEL SIMULADOR
-=================================== */
-
-body > #resultadoSimulacion.modal-resultado{
-    position:fixed !important;
-    inset:0 !important;
-    width:100vw !important;
-    height:100dvh !important;
-    max-width:none !important;
     margin:0 !important;
     padding:24px !important;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    z-index:99999 !important;
-}
-
-body > #resultadoSimulacion.modal-resultado.oculto{
-    display:none !important;
-}
-
-body > #resultadoSimulacion .modal-resultado-contenido{
-    position:relative;
-    width:min(1250px, calc(100vw - 48px)) !important;
-    max-width:1250px !important;
-    max-height:92dvh;
-    margin:auto !important;
-    overflow-y:auto;
-}
-
-@media(max-width:650px){
-
-    body > #resultadoSimulacion.modal-resultado{
-        padding:0 !important;
-        align-items:flex-end;
-    }
-
-    body > #resultadoSimulacion .modal-resultado-contenido{
-        width:100vw !important;
-        max-width:none !important;
-        max-height:95dvh;
-        border-radius:24px 24px 0 0;
-    }
-
-}
-/* ==================================================
-MODAL DE RESULTADOS — VERSIÓN DEFINITIVA
-================================================== */
-
-#resultadoSimulacion.modal-resultado{
-    position:fixed !important;
-    inset:0 !important;
-
-    width:100vw !important;
-    height:100vh !important;
-    max-width:none !important;
-
-    margin:0 !important;
-    padding:24px !important;
-
+    border:0 !important;
     display:flex !important;
     align-items:center !important;
     justify-content:center !important;
-
-    background:transparent !important;
     overflow:hidden !important;
-
+    background:transparent !important;
+    box-sizing:border-box !important;
     z-index:99999 !important;
 }
-
-
-/* OCULTAR MODAL */
 
 #resultadoSimulacion.modal-resultado.oculto{
     display:none !important;
 }
 
-
-/* FONDO OSCURO */
-
 #resultadoSimulacion .modal-resultado-fondo{
     position:absolute !important;
     inset:0 !important;
-
     width:100% !important;
     height:100% !important;
-
-    background:rgba(1,12,30,.82) !important;
+    background:rgba(1,12,30,.88) !important;
     backdrop-filter:blur(7px);
-
-    z-index:1;
+    -webkit-backdrop-filter:blur(7px);
+    z-index:1 !important;
 }
-
-
-/* VENTANA CENTRAL */
 
 #resultadoSimulacion .modal-resultado-contenido{
     position:relative !important;
-    z-index:2 !important;
-
-    width:min(920px, calc(100vw - 50px)) !important;
-    max-width:920px !important;
-    max-height:88vh !important;
-
+    inset:auto !important;
+    width:min(1220px, calc(100% - 48px)) !important;
+    max-width:1220px !important;
+    max-height:92vh !important;
     margin:auto !important;
-    padding:30px !important;
-
+    padding:38px !important;
     overflow-x:hidden !important;
     overflow-y:auto !important;
-
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:24px;
-
-    background:linear-gradient(
-        145deg,
-        #092d5e,
-        #0d559b
-    ) !important;
-
-    box-shadow:0 35px 100px rgba(0,0,0,.55);
+    border:1px solid rgba(255,255,255,.14) !important;
+    border-radius:26px !important;
+    background:linear-gradient(145deg,#092f64,#0d579e) !important;
+    box-shadow:0 35px 100px rgba(0,0,0,.5) !important;
+    box-sizing:border-box !important;
+    transform:none;
+    z-index:2 !important;
 }
 
+#resultadoSimulacion .modal-resultado-contenido::-webkit-scrollbar{
+    width:8px;
+}
 
-/* BOTÓN CERRAR */
+#resultadoSimulacion .modal-resultado-contenido::-webkit-scrollbar-thumb{
+    border-radius:20px;
+    background:rgba(255,255,255,.32);
+}
 
 #resultadoSimulacion .modal-resultado-cerrar{
     position:absolute !important;
-    top:15px !important;
-    right:15px !important;
-
-    float:none !important;
+    top:14px !important;
+    right:14px !important;
+    width:44px !important;
+    height:44px !important;
     margin:0 !important;
-
-    width:42px;
-    height:42px;
-
-    border:1px solid rgba(255,255,255,.20);
-    border-radius:50%;
-
-    background:rgba(255,255,255,.14);
-    color:#ffffff;
-
-    font-size:20px;
+    border:1px solid rgba(255,255,255,.22) !important;
+    border-radius:50% !important;
+    background:rgba(255,255,255,.14) !important;
+    color:#fff !important;
+    font-size:20px !important;
     cursor:pointer;
-
-    z-index:10;
+    z-index:20 !important;
 }
 
-
-/* ENCABEZADO */
-
 #resultadoSimulacion .resultado-encabezado{
-    width:100% !important;
-    max-width:700px !important;
-
-    margin:0 auto 26px !important;
-    padding:0 50px !important;
-
+    max-width:820px !important;
+    margin:0 auto 30px !important;
+    padding:0 54px !important;
     text-align:center !important;
 }
 
 #resultadoSimulacion .resultado-encabezado span{
     color:#f2c94c !important;
-    font-size:12px !important;
-    font-weight:800;
-    letter-spacing:2px;
+    font-size:13px !important;
+    font-weight:800 !important;
+    letter-spacing:2px !important;
 }
 
 #resultadoSimulacion .resultado-encabezado h4{
     margin:8px 0 0 !important;
-
-    color:#ffffff !important;
-
-    font-size:36px !important;
-    font-weight:800 !important;
-    line-height:1.1 !important;
+    color:#fff !important;
+    font-size:clamp(34px,4vw,50px) !important;
+    line-height:1.08 !important;
 }
-
-
-/* BLOQUES DE RESULTADOS */
 
 #resultadoSimulacion .resultado-bloque{
     width:100% !important;
-    max-width:none !important;
-
-    margin:18px 0 0 !important;
-    padding:21px !important;
-
-    border:1px solid rgba(255,255,255,.13);
-    border-radius:18px;
-
+    margin:20px 0 0 !important;
+    padding:24px !important;
+    border:1px solid rgba(255,255,255,.13) !important;
+    border-radius:20px !important;
     background:rgba(4,28,62,.38) !important;
     box-shadow:none !important;
+    box-sizing:border-box !important;
 }
-
-
-/* ENCABEZADO DE CADA ESCENARIO */
 
 #resultadoSimulacion .resultado-bloque-titulo{
     display:grid !important;
-    grid-template-columns:45px minmax(0,1fr) !important;
+    grid-template-columns:52px minmax(0,1fr) !important;
     align-items:start !important;
-
-    gap:13px !important;
-    margin-bottom:18px !important;
+    gap:15px !important;
+    margin-bottom:20px !important;
 }
 
 #resultadoSimulacion .resultado-icono{
-    width:45px !important;
-    height:45px !important;
-    min-width:45px !important;
-
-    border-radius:12px;
-
-    font-size:19px !important;
+    width:52px !important;
+    height:52px !important;
+    min-width:52px !important;
+    border-radius:14px !important;
+    font-size:22px !important;
 }
 
 #resultadoSimulacion .resultado-bloque-titulo span{
-    display:block;
-
-    margin-bottom:4px !important;
-
+    margin-bottom:5px !important;
     color:#f2c94c !important;
-
-    font-size:11px !important;
-    font-weight:800;
-    letter-spacing:1.5px;
+    font-size:12px !important;
+    letter-spacing:1.5px !important;
 }
 
 #resultadoSimulacion .resultado-bloque-titulo h4{
     margin:0 !important;
-
-    color:#ffffff !important;
-
-    font-size:25px !important;
+    color:#fff !important;
+    font-size:clamp(24px,3vw,34px) !important;
     line-height:1.15 !important;
+    word-break:normal !important;
 }
 
 #resultadoSimulacion .resultado-bloque-titulo p{
-    margin-top:7px !important;
-
-    color:rgba(255,255,255,.82) !important;
-
-    font-size:13px !important;
+    margin-top:8px !important;
+    color:rgba(255,255,255,.84) !important;
+    font-size:14px !important;
     line-height:1.5 !important;
 }
 
-
-/* CUATRO RESULTADOS */
-
 #resultadoSimulacion .resultados-grid-cuatro{
-    width:100% !important;
-
     display:grid !important;
     grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-
-    gap:11px !important;
+    gap:14px !important;
+    width:100% !important;
 }
-
-
-/* TARJETAS */
 
 #resultadoSimulacion .resultado-item{
     min-width:0 !important;
-    min-height:105px !important;
-
-    padding:14px 9px !important;
-
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:14px !important;
-
+    min-height:118px !important;
+    padding:17px 10px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:15px !important;
     background:#f5f8fc !important;
+    box-sizing:border-box !important;
 }
 
 #resultadoSimulacion .resultado-item span{
-    display:block;
-
     color:#617188 !important;
-
-    font-size:11px !important;
+    font-size:12px !important;
     line-height:1.35 !important;
-
-    text-align:center;
+    text-align:center !important;
 }
 
 #resultadoSimulacion .resultado-item strong{
-    display:block;
-
-    margin-top:7px;
-
+    margin-top:8px !important;
     color:#07529d !important;
-
-    font-size:19px !important;
+    font-size:clamp(18px,2vw,25px) !important;
     line-height:1.15 !important;
-
-    text-align:center;
-    overflow-wrap:anywhere;
+    text-align:center !important;
+    overflow-wrap:anywhere !important;
 }
-
-
-/* MENSAJE DEL RESULTADO */
 
 #resultadoSimulacion .estado-solicitud{
     margin:18px 0 !important;
-    padding:14px !important;
-
-    font-size:13px !important;
+    padding:15px !important;
 }
-
-
-/* BOTÓN DE WHATSAPP */
 
 #resultadoSimulacion .btn-whatsapp-resultado{
     width:min(560px,100%) !important;
-    min-height:57px !important;
-
-    margin:20px auto 0 !important;
+    min-height:58px !important;
+    margin:18px auto 8px !important;
     padding:14px 18px !important;
-
     font-size:15px !important;
-    text-align:center;
+    text-align:center !important;
 }
-
-
-/* AVISO FINAL */
 
 #resultadoSimulacion .resultado-aviso-final{
-    max-width:650px;
-
-    margin:12px auto 0 !important;
-
-    color:rgba(255,255,255,.73) !important;
-
+    max-width:650px !important;
+    margin:10px auto 0 !important;
+    color:rgba(255,255,255,.76) !important;
     font-size:11px !important;
     line-height:1.45 !important;
-    text-align:center;
+    text-align:center !important;
 }
 
-
-/* ANIMACIÓN */
-
 @keyframes abrirModalCotizacion{
-
     from{
         opacity:0;
-        transform:translateY(20px) scale(.97);
+        transform:translateY(18px) scale(.98);
     }
-
     to{
         opacity:1;
         transform:translateY(0) scale(1);
     }
-
 }
 
-#resultadoSimulacion:not(.oculto)
-.modal-resultado-contenido{
-    animation:abrirModalCotizacion .32s ease both;
+#resultadoSimulacion:not(.oculto) .modal-resultado-contenido{
+    animation:abrirModalCotizacion .3s ease both;
 }
+
+body.modal-resultados-abierto .chatbot,
+body.modal-resultados-abierto .whatsapp-flotante{
+    display:none !important;
+}
+
 @media(max-width:900px){
+    #resultadoSimulacion.modal-resultado{
+        padding:14px !important;
+    }
 
     #resultadoSimulacion .modal-resultado-contenido{
-        width:min(720px,calc(100vw - 30px)) !important;
-        padding:26px 18px !important;
+        width:calc(100% - 28px) !important;
+        max-width:none !important;
+        padding:28px 20px !important;
     }
 
     #resultadoSimulacion .resultados-grid-cuatro{
         grid-template-columns:repeat(2,minmax(0,1fr)) !important;
     }
-
 }
+
+@media(max-width:650px){
+    html,
+    body{
+        max-width:100% !important;
+        overflow-x:hidden !important;
+    }
+
+    #resultadoSimulacion.modal-resultado{
+        position:fixed !important;
+        inset:0 !important;
+        width:100% !important;
+        height:100dvh !important;
+        min-height:100vh !important;
+        padding:10px !important;
+        align-items:center !important;
+        justify-content:center !important;
+        overflow:hidden !important;
+        background:transparent !important;
+        transform:none !important;
+    }
+
+    #resultadoSimulacion .modal-resultado-fondo{
+        position:absolute !important;
+        inset:0 !important;
+        background:rgba(1,12,30,.9) !important;
+    }
+
+    #resultadoSimulacion .modal-resultado-contenido{
+        position:relative !important;
+        width:calc(100% - 8px) !important;
+        max-width:none !important;
+        max-height:calc(100dvh - 20px) !important;
+        margin:auto !important;
+        padding:58px 12px 24px !important;
+        border-radius:20px !important;
+        overflow-x:hidden !important;
+        overflow-y:auto !important;
+        transform:none !important;
+    }
+
+    #resultadoSimulacion .modal-resultado-cerrar{
+        position:absolute !important;
+        top:10px !important;
+        right:10px !important;
+        left:auto !important;
+        width:42px !important;
+        height:42px !important;
+    }
+
+    #resultadoSimulacion .resultado-encabezado{
+        width:100% !important;
+        margin:0 auto 22px !important;
+        padding:0 40px !important;
+    }
+
+    #resultadoSimulacion .resultado-encabezado h4{
+        font-size:28px !important;
+        line-height:1.1 !important;
+    }
+
+    #resultadoSimulacion .resultado-bloque{
+        padding:15px 10px !important;
+        border-radius:17px !important;
+    }
+
+    #resultadoSimulacion .resultado-bloque-titulo{
+        grid-template-columns:40px minmax(0,1fr) !important;
+        gap:9px !important;
+        margin-bottom:15px !important;
+    }
+
+    #resultadoSimulacion .resultado-icono{
+        width:40px !important;
+        height:40px !important;
+        min-width:40px !important;
+        font-size:17px !important;
+    }
+
+    #resultadoSimulacion .resultado-bloque-titulo span{
+        font-size:10px !important;
+        line-height:1.3 !important;
+    }
+
+    #resultadoSimulacion .resultado-bloque-titulo h4{
+        font-size:20px !important;
+        line-height:1.12 !important;
+    }
+
+    #resultadoSimulacion .resultado-bloque-titulo p{
+        font-size:11px !important;
+        line-height:1.4 !important;
+    }
+
+    #resultadoSimulacion .resultados-grid-cuatro{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:8px !important;
+    }
+
+    #resultadoSimulacion .resultado-item{
+        min-height:96px !important;
+        padding:10px 6px !important;
+    }
+
+    #resultadoSimulacion .resultado-item span{
+        font-size:9px !important;
+    }
+
+    #resultadoSimulacion .resultado-item strong{
+        font-size:16px !important;
+    }
+
+    #resultadoSimulacion .estado-solicitud{
+        font-size:12px !important;
+        padding:12px !important;
+    }
+
+    #resultadoSimulacion .btn-whatsapp-resultado{
+        width:100% !important;
+        min-height:54px !important;
+        margin:14px auto 6px !important;
+        padding:12px 9px !important;
+        font-size:13px !important;
+    }
+}
+
 /* ==================================
 CONFETI DE RESULTADOS
 =================================== */
@@ -3881,350 +3168,7 @@ CONFETI DE RESULTADOS
 html {
     scroll-behavior: smooth;
 }
-/* ==========================================
-CORRECCIÓN FINAL DEL MENÚ EN CELULAR
-========================================== */
 
-@media (max-width: 768px) {
-
-    /* Contenedor del menú */
-    .nav-links,
-    .menu,
-    nav ul {
-        width: 100%;
-        max-width: 100%;
-
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 8px;
-
-        margin: 8px 0 0;
-        padding: 4px 16px 8px;
-
-        overflow-x: auto;
-        overflow-y: hidden;
-
-        white-space: nowrap;
-        scroll-padding-left: 16px;
-
-        box-sizing: border-box;
-        scrollbar-width: none;
-    }
-
-    .nav-links::-webkit-scrollbar,
-    .menu::-webkit-scrollbar,
-    nav ul::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Evita que el primer enlace se corte */
-    .nav-links li:first-child,
-    .menu li:first-child,
-    nav ul li:first-child {
-        margin-left: 0;
-    }
-
-    .nav-links li:last-child,
-    .menu li:last-child,
-    nav ul li:last-child {
-        padding-right: 16px;
-    }
-
-    /* Todos los botones del menú iguales */
-    .nav-links a,
-    .menu a,
-    nav ul li a,
-    nav a[href="#formulario"] {
-        display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
-
-        flex: 0 0 auto;
-
-        min-height: 38px;
-        padding: 9px 14px !important;
-
-        border: 1px solid #dce8f7 !important;
-        border-radius: 25px !important;
-
-        background: #f3f7fc !important;
-        color: #0b376b !important;
-
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 1;
-
-        text-decoration: none !important;
-        box-shadow: 0 3px 10px rgba(11, 55, 107, 0.08);
-    }
-
-    /* Efecto al tocar */
-    .nav-links a:active,
-    .menu a:active,
-    nav ul li a:active {
-        transform: scale(0.97);
-        background: #e8f1fb !important;
-    }
-}
 #formulario {
     scroll-margin-top: 100px;
-}
-/* ==================================================
-REPARACIÓN DEFINITIVA DEL MODAL EN CELULAR
-PEGAR AL FINAL ABSOLUTO DE styles.css
-================================================== */
-
-@media (max-width: 768px) {
-
-    html,
-    body {
-        max-width: 100%;
-        overflow-x: hidden !important;
-    }
-
-    /*
-    Capa que cubre toda la pantalla del celular
-    */
-
-    body > #resultadoSimulacion.modal-resultado {
-        position: fixed !important;
-
-        top: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        left: 0 !important;
-
-        inset: 0 !important;
-
-        width: 100vw !important;
-        width: 100dvw !important;
-
-        height: 100vh !important;
-        height: 100dvh !important;
-
-        min-width: 100vw !important;
-        max-width: none !important;
-
-        margin: 0 !important;
-        padding: 10px !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-
-        overflow: hidden !important;
-
-        background: rgba(1, 12, 30, 0.88) !important;
-        backdrop-filter: blur(7px);
-        -webkit-backdrop-filter: blur(7px);
-
-        transform: none !important;
-
-        box-sizing: border-box !important;
-
-        z-index: 999999 !important;
-    }
-
-    /*
-    Cuando está oculto, no debe verse nada
-    */
-
-    body > #resultadoSimulacion.modal-resultado.oculto {
-        display: none !important;
-    }
-
-    /*
-    Fondo interno del modal
-    */
-
-    body > #resultadoSimulacion .modal-resultado-fondo {
-        position: absolute !important;
-        inset: 0 !important;
-
-        width: 100% !important;
-        height: 100% !important;
-
-        margin: 0 !important;
-
-        background: rgba(1, 12, 30, 0.88) !important;
-
-        z-index: 1 !important;
-    }
-
-    /*
-    Ventana azul centrada
-    */
-
-    body > #resultadoSimulacion .modal-resultado-contenido {
-        position: relative !important;
-
-        top: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        left: auto !important;
-
-        width: calc(100dvw - 20px) !important;
-        min-width: 0 !important;
-        max-width: calc(100dvw - 20px) !important;
-
-        height: auto !important;
-        max-height: calc(100dvh - 20px) !important;
-
-        margin: 0 auto !important;
-        padding: 64px 14px 28px !important;
-
-        overflow-x: hidden !important;
-        overflow-y: auto !important;
-
-        border-radius: 22px !important;
-
-        transform: none !important;
-
-        box-sizing: border-box !important;
-
-        z-index: 2 !important;
-    }
-
-    /*
-    Botón de cerrar siempre visible
-    */
-
-    body > #resultadoSimulacion .modal-resultado-cerrar {
-        position: absolute !important;
-
-        top: 12px !important;
-        right: 12px !important;
-        left: auto !important;
-
-        width: 44px !important;
-        height: 44px !important;
-
-        margin: 0 !important;
-
-        z-index: 20 !important;
-    }
-
-    /*
-    Encabezado del resultado
-    */
-
-    body > #resultadoSimulacion .resultado-encabezado {
-        width: 100% !important;
-        max-width: none !important;
-
-        margin: 0 auto 24px !important;
-        padding: 0 42px !important;
-
-        box-sizing: border-box !important;
-    }
-
-    body > #resultadoSimulacion .resultado-encabezado h4 {
-        margin: 8px 0 0 !important;
-
-        font-size: 27px !important;
-        line-height: 1.12 !important;
-
-        overflow-wrap: normal !important;
-        word-break: normal !important;
-    }
-
-    /*
-    Bloques internos
-    */
-
-    body > #resultadoSimulacion .resultado-bloque {
-        width: 100% !important;
-        max-width: none !important;
-
-        margin: 15px 0 0 !important;
-        padding: 16px 12px !important;
-
-        box-sizing: border-box !important;
-    }
-
-    body > #resultadoSimulacion .resultado-bloque-titulo {
-        width: 100% !important;
-
-        display: grid !important;
-        grid-template-columns: 42px minmax(0, 1fr) !important;
-
-        gap: 10px !important;
-
-        box-sizing: border-box !important;
-    }
-
-    body > #resultadoSimulacion .resultado-bloque-titulo h4 {
-        font-size: 21px !important;
-        line-height: 1.15 !important;
-
-        word-break: normal !important;
-        overflow-wrap: normal !important;
-    }
-
-    /*
-    Tarjetas: dos columnas en celular
-    */
-
-    body > #resultadoSimulacion .resultados-grid-cuatro {
-        width: 100% !important;
-
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-
-        gap: 9px !important;
-
-        box-sizing: border-box !important;
-    }
-
-    body > #resultadoSimulacion .resultado-item {
-        width: 100% !important;
-        min-width: 0 !important;
-        min-height: 104px !important;
-
-        padding: 12px 7px !important;
-
-        box-sizing: border-box !important;
-    }
-
-    body > #resultadoSimulacion .resultado-item span {
-        font-size: 10px !important;
-        line-height: 1.3 !important;
-    }
-
-    body > #resultadoSimulacion .resultado-item strong {
-        font-size: 17px !important;
-        line-height: 1.15 !important;
-
-        word-break: normal !important;
-        overflow-wrap: anywhere !important;
-    }
-
-    /*
-    Botón de WhatsApp dentro del resultado
-    */
-
-    body > #resultadoSimulacion .btn-whatsapp-resultado {
-        width: 100% !important;
-        max-width: 100% !important;
-
-        min-height: 58px !important;
-
-        margin: 16px auto 8px !important;
-        padding: 13px 10px !important;
-
-        font-size: 14px !important;
-        line-height: 1.3 !important;
-
-        box-sizing: border-box !important;
-    }
-
-    /*
-    Ocultar botones flotantes mientras el modal está abierto
-    */
-
-    body.modal-resultados-abierto .chatbot,
-    body.modal-resultados-abierto .whatsapp-flotante {
-        display: none !important;
-    }
 }
