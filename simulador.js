@@ -49,7 +49,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+function limpiarErrores(){
 
+    document.querySelectorAll(".mensaje-error").forEach(el=>{
+
+        el.textContent="";
+
+    });
+
+    document.querySelectorAll("input").forEach(input=>{
+
+        input.classList.remove("input-error");
+
+    });
+
+}
+
+function mostrarError(idInput,idError,mensaje){
+
+    document
+    .getElementById(idInput)
+    .classList
+    .add("input-error");
+
+    document
+    .getElementById(idError)
+    .textContent=mensaje;
+
+}
 /*
 ==================================================
 PROCESAR LA SIMULACIÓN
@@ -65,13 +92,25 @@ function procesarSimulacion(evento) {
     const plazo = obtenerNumero("plazoCredito");
     const pensionMensual = obtenerNumero("pensionBruta");
 
-    const mensajeValidacion = validarDatosSimulador({
-        montoDeseado,
-        edad,
-        plazo,
-        pensionMensual
-    });
+    limpiarErrores();
 
+const mensajeValidacion = validarDatosSimulador({
+
+    montoDeseado,
+
+    edad,
+
+    plazo,
+
+    pensionMensual
+
+});
+
+if(mensajeValidacion){
+
+    return;
+
+}
     if (mensajeValidacion) {
         alert(mensajeValidacion);
         return;
@@ -354,9 +393,21 @@ function validarDatosSimulador(datos) {
     El crédito mínimo es de $6,000.
     */
 
-    if (montoDeseado < 6000) {
-        return "El monto mínimo que puedes solicitar es de $6,000.";
-    }
+    if(montoDeseado<6000){
+
+    mostrarError(
+
+        "montoDeseado",
+
+        "errorMonto",
+
+        "El monto mínimo es de $6,000."
+
+    );
+
+    return true;
+
+}
 
 
     /*
@@ -364,9 +415,21 @@ function validarDatosSimulador(datos) {
     El crédito máximo es de $600,000.
     */
 
-    if (montoDeseado > 600000) {
-        return "El monto máximo que puedes solicitar es de $600,000.";
-    }
+   if(montoDeseado>600000){
+
+    mostrarError(
+
+        "montoDeseado",
+
+        "errorMonto",
+
+        "El monto máximo es de $600,000."
+
+    );
+
+    return true;
+
+}
 
 
     /*
@@ -374,9 +437,21 @@ function validarDatosSimulador(datos) {
     La edad mínima es de 60 años.
     */
 
-    if (edad < 60) {
-        return "La edad mínima para solicitar un crédito es de 60 años.";
-    }
+    if(edad<60){
+
+    mostrarError(
+
+        "edad",
+
+        "errorEdad",
+
+        "La edad mínima es de 60 años."
+
+    );
+
+    return true;
+
+}
 
 
     /*
@@ -384,10 +459,21 @@ function validarDatosSimulador(datos) {
     La edad máxima es de 74 años.
     */
 
-    if (edad > 74) {
-        return "La edad máxima para solicitar un crédito es de 74 años.";
-    }
+    if(edad>74){
 
+    mostrarError(
+
+        "edad",
+
+        "errorEdad",
+
+        "La edad máxima es de 74 años."
+
+    );
+
+    return true;
+
+}
 
     /*
     Validación de pensión.
