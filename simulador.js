@@ -319,51 +319,101 @@ function calcularPagoMensual(
         );
 
 }
-
-
 /*
 ==================================================
-VALIDACIONES
+VALIDAR DATOS DEL SIMULADOR
 ==================================================
 */
 
 function validarDatosSimulador(datos) {
 
-    if (
-        !datos.montoDeseado ||
-        datos.montoDeseado < 5000
-    ) {
-        return "El monto solicitado debe ser mayor a $5,000.";
-    }
+    const {
+        montoDeseado,
+        edad,
+        plazo,
+        pensionMensual
+    } = datos;
+
+
+    /*
+    Validamos que todos los datos estén completos.
+    */
 
     if (
-        !datos.edad ||
-        datos.edad < 40 ||
-        datos.edad > 90
+        !montoDeseado ||
+        !edad ||
+        !plazo ||
+        !pensionMensual
     ) {
-        return "Escribe una edad válida entre 40 y 90 años.";
+        return "Por favor completa todos los datos para realizar la simulación.";
     }
 
-    if (
-        !CONFIGURACION_CREDITO.plazosPermitidos.includes(
-            datos.plazo
-        )
-    ) {
-        return "Selecciona un plazo válido.";
+
+    /*
+    REGLA 1:
+    El crédito mínimo es de $6,000.
+    */
+
+    if (montoDeseado < 6000) {
+        return "El monto mínimo que puedes solicitar es de $6,000.";
     }
 
-    if (
-        !datos.pensionMensual ||
-        datos.pensionMensual <= 0
-    ) {
-        return "Escribe cuánto recibes de pensión al mes.";
+
+    /*
+    REGLA 2:
+    El crédito máximo es de $600,000.
+    */
+
+    if (montoDeseado > 600000) {
+        return "El monto máximo que puedes solicitar es de $600,000.";
     }
+
+
+    /*
+    REGLA 3:
+    La edad mínima es de 60 años.
+    */
+
+    if (edad < 60) {
+        return "La edad mínima para solicitar un crédito es de 60 años.";
+    }
+
+
+    /*
+    REGLA 4:
+    La edad máxima es de 74 años.
+    */
+
+    if (edad > 74) {
+        return "La edad máxima para solicitar un crédito es de 74 años.";
+    }
+
+
+    /*
+    Validación de pensión.
+    */
+
+    if (pensionMensual <= 0) {
+        return "Ingresa una cantidad válida para tu pensión mensual.";
+    }
+
+
+    /*
+    Validamos que exista un plazo seleccionado.
+    */
+
+    if (![12, 24, 36, 48, 60].includes(plazo)) {
+        return "Selecciona un plazo válido para continuar.";
+    }
+
+
+    /*
+    Si todo está correcto, no devolvemos error.
+    */
 
     return "";
 
 }
-
-
 /*
 ==================================================
 MOSTRAR RESULTADOS
