@@ -3878,3 +3878,11 @@ CONFETI DE RESULTADOS
         scroll-margin-top: 20px;
     }
 }
+html {
+    scroll-behavior: smooth;
+}
+
+#formulario {
+    scroll-margin-top: 100px;
+}
+
