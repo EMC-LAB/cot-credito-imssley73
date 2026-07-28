@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Crédito para Pensionados IMSS Ley 73</title>
+    <meta name="description" content="Calcula una estimación inicial de crédito para pensionados IMSS Ley 73 y envía el resultado por WhatsApp a Daniel Pimentel.">
+    <meta name="author" content="Daniel Pimentel">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <link rel="canonical" href="https://emc-lab.github.io/cot-credito-imssley73/simulador/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="Simulador de Crédito para Pensionados IMSS Ley 73">
+    <meta property="og:description" content="Calcula una estimación inicial de crédito para pensionados IMSS Ley 73 y envía el resultado por WhatsApp a Daniel Pimentel.">
+    <meta property="og:url" content="https://emc-lab.github.io/cot-credito-imssley73/simulador/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<div class="top-bar"><p>✔ Atención en todo México &nbsp;&nbsp; ✔ Atención personalizada &nbsp;&nbsp; ✔ Proceso seguro</p></div>
+<header class="site-header">
+    <a class="site-logo" href="../">Créditos IMSS</a>
+    <nav class="site-nav" aria-label="Navegación principal">
+        <ul>
+            <li><a href="../">Inicio</a></li>
+            <li><a href="../simulador/">Simulador</a></li>
+            <li><a href="../requisitos/">Requisitos</a></li>
+            <li><a href="../credito-nuevo/">Crédito nuevo</a></li>
+            <li><a href="../renovacion/">Renovación</a></li>
+            <li><a href="../preguntas-frecuentes/">Preguntas</a></li>
+        </ul>
+    </nav>
+    <a class="btn-header" href="https://wa.me/525518417167?text=Hola,%20vengo%20del%20sitio%20web%20y%20quiero%20información%20sobre%20un%20crédito%20para%20pensionados." target="_blank" rel="noopener">WhatsApp</a>
+</header>
+<main>
+<section class="pagina-interna-hero">
+    <div class="contenedor pagina-interna-contenido">
+        <nav class="migas" aria-label="Migas de pan"><a href="../">Inicio</a><span>/</span><span>Simulador</span></nav>
+        <span class="etiqueta-seccion">SIMULADOR</span>
+        <h1>Simulador de crédito para pensionados IMSS</h1>
+        <p>Ingresa tus datos para conocer una estimación inicial. El resultado es informativo y debe confirmarse con una institución financiera.</p>
+    </div>
+</section>
+<section class="captacion captacion-pagina"><div class="contenedor captacion-grid">
+<div class="captacion-info"><span class="etiqueta-seccion">PASO A PASO</span><h2>Primero registra tus datos de contacto</h2><p>Después podrás ingresar el monto, edad, plazo y pensión mensual. Tus datos se usarán para brindarte información relacionada con tu solicitud.</p><div class="captacion-ventajas"><div><i class="fa-solid fa-circle-check"></i> Simulación inicial gratuita</div><div><i class="fa-solid fa-circle-check"></i> Montos desde $6,000 hasta $600,000</div><div><i class="fa-solid fa-circle-check"></i> Edad de 60 a 74 años</div><div><i class="fa-solid fa-circle-check"></i> Cantidades exactas, sin saltos de mil</div></div></div>
+<div class="formulario-card" id="contenedorFormulario"><div class="formulario-encabezado"><span>PASO 1 DE 2</span><h2>Solicita tu simulación</h2><p>Tus datos serán utilizados únicamente para brindarte información.</p></div>
+<form id="formLead" novalidate>
+<div class="campo-formulario"><label for="nombre">Nombre completo *</label><div class="campo-icono"><i class="fa-solid fa-user"></i><input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo" autocomplete="name" required></div><small class="mensaje-error" id="errorNombre"></small></div>
+<div class="campo-formulario"><label for="correo">Correo electrónico *</label><div class="campo-icono"><i class="fa-solid fa-envelope"></i><input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" autocomplete="email" required></div><small class="mensaje-error" id="errorCorreo"></small></div>
+<div class="campo-formulario"><label for="telefono">Teléfono o WhatsApp *</label><div class="campo-icono"><i class="fa-solid fa-phone"></i><input type="tel" id="telefono" name="telefono" placeholder="10 dígitos" inputmode="numeric" maxlength="10" autocomplete="tel" required></div><small class="mensaje-error" id="errorTelefono"></small></div>
+<div class="doble-campo"><div class="campo-formulario"><label for="tipoTramite">Tipo de trámite *</label><select id="tipoTramite" name="tipoTramite" required><option value="">Selecciona una opción</option><option value="credito-nuevo">Crédito nuevo</option><option value="renovacion">Renovación</option><option value="mejora">Mejora de crédito</option></select><small class="mensaje-error" id="errorTramite"></small></div><div class="campo-formulario"><label for="creditoAnterior">¿Has tenido crédito antes? *</label><select id="creditoAnterior" name="creditoAnterior" required><option value="">Selecciona una opción</option><option value="si">Sí</option><option value="no">No</option></select><small class="mensaje-error" id="errorCreditoAnterior"></small></div></div>
+<div class="doble-campo"><div class="campo-formulario"><label for="curp">CURP <span>Opcional</span></label><input type="text" id="curp" name="curp" placeholder="18 caracteres" maxlength="18" autocomplete="off"></div><div class="campo-formulario"><label for="nss">NSS <span>Opcional</span></label><input type="text" id="nss" name="nss" placeholder="11 dígitos" maxlength="11" inputmode="numeric" autocomplete="off"></div></div>
+<label class="aceptacion"><input type="checkbox" id="privacidad" required><span>Acepto el uso de mis datos para recibir información y asesoría.</span></label><small class="mensaje-error" id="errorPrivacidad"></small>
+<button type="submit" class="btn-formulario">Continuar y ver simulación <i class="fa-solid fa-arrow-right"></i></button><p class="seguridad-formulario"><i class="fa-solid fa-lock"></i> Tus datos se manejan de forma confidencial.</p>
+</form></div>
+<div class="simulador-card oculto" id="contenedorSimulador"><div class="formulario-encabezado"><span>PASO 2 DE 2</span><h2 id="saludoSimulador">Realiza tu simulación</h2><p>Ingresa los siguientes datos para obtener un cálculo inicial.</p></div>
+<form id="formSimulador" novalidate>
+<div class="campo-formulario campo-completo"><label for="montoDeseado">¿Cuánto dinero necesitas?</label><div class="campo-moneda"><span>$</span><input type="number" id="montoDeseado" min="6000" max="600000" step="1" value="50000" inputmode="numeric" required></div><small class="mensaje-error" id="errorMontoDeseado"></small></div>
+<div class="doble-campo"><div class="campo-formulario"><label for="edad">Edad</label><input type="number" id="edad" min="60" max="74" step="1" placeholder="Ejemplo: 68" inputmode="numeric" required><small class="mensaje-error" id="errorEdad"></small></div><div class="campo-formulario"><label for="plazoCredito">Plazo deseado</label><select id="plazoCredito" required><option value="">Selecciona el plazo</option><option value="12">12 meses</option><option value="24">24 meses</option><option value="36">36 meses</option><option value="48">48 meses</option><option value="60">60 meses</option></select><small class="mensaje-error" id="errorPlazoCredito"></small></div></div>
+<div class="campo-formulario campo-completo"><label for="pensionBruta">¿Cuánto recibes de pensión al mes?</label><div class="campo-moneda"><span>$</span><input type="number" id="pensionBruta" min="1000" step="1" placeholder="Ejemplo: 15000" inputmode="numeric" required></div><small class="mensaje-error" id="errorPensionBruta"></small></div>
+<button type="submit" class="btn-formulario">Calcular simulación <i class="fa-solid fa-calculator"></i></button></form></div>
+</div></section>
+<section class="nota-seo"><div class="contenedor"><h2>¿Qué considera esta simulación?</h2><p>El cálculo usa el monto solicitado, el plazo seleccionado, la pensión mensual y una capacidad máxima estimada equivalente al 30% de la pensión. La aprobación definitiva depende de la revisión documental y de las condiciones vigentes de cada institución.</p></div></section>
+</main>
+<div class="resultado-simulacion modal-resultado oculto" id="resultadoSimulacion" role="dialog" aria-modal="true" aria-labelledby="tituloResultado"><div class="modal-resultado-fondo" id="fondoResultado"></div><div class="modal-resultado-contenido"><button type="button" class="modal-resultado-cerrar" id="cerrarResultado" aria-label="Cerrar resultados"><i class="fa-solid fa-xmark"></i></button><div class="resultado-encabezado"><span>RESULTADO INICIAL</span><h4 id="tituloResultado">🎉 ¡Tu simulación está lista!</h4></div>
+<div class="resultado-bloque resultado-maximo"><div class="resultado-bloque-titulo"><div class="resultado-icono"><i class="fa-solid fa-arrow-trend-up"></i></div><div><span>CAPACIDAD MÁXIMA ESTIMADA</span><h4>Monto máximo estimado disponible</h4><p>Calculado utilizando como máximo el 30% de tu pensión mensual y un plazo de 60 meses.</p></div></div><div class="resultados-grid resultados-grid-cuatro"><div class="resultado-item"><span>Monto máximo estimado</span><strong id="resultadoMonto">$0</strong></div><div class="resultado-item"><span>Descuento mensual máximo</span><strong id="resultadoCapacidad">$0</strong></div><div class="resultado-item"><span>Plazo máximo utilizado</span><strong id="resultadoPlazoMaximo">0 meses</strong></div><div class="resultado-item"><span>Total estimado a pagar</span><strong id="resultadoTotalMaximo">$0</strong></div></div></div>
+<div class="resultado-bloque resultado-solicitado"><div class="resultado-bloque-titulo"><div class="resultado-icono"><i class="fa-solid fa-hand-holding-dollar"></i></div><div><span>TU SOLICITUD</span><h4>Simulación del monto solicitado</h4><p>Mensualidad y total estimados para el monto que ingresaste.</p></div></div><div class="resultados-grid resultados-grid-cuatro"><div class="resultado-item"><span>Monto solicitado</span><strong id="resultadoSolicitado">$0</strong></div><div class="resultado-item"><span>Descuento mensual estimado</span><strong id="resultadoPago">$0</strong></div><div class="resultado-item"><span>Plazo seleccionado</span><strong id="resultadoPlazo">0 meses</strong></div><div class="resultado-item"><span>Total estimado a pagar</span><strong id="resultadoPagoTotal">$0</strong></div></div></div>
+<div class="estado-solicitud" id="estadoSolicitud"></div><p class="nota-resultado">Esta simulación es únicamente informativa. El monto, plazo, tasa y aprobación dependen del análisis y de las condiciones de la institución financiera.</p><a href="#" class="btn-whatsapp-resultado" id="whatsappResultado" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Enviar mi simulación a Daniel para evaluación</a><p class="resultado-aviso-final">Daniel revisará personalmente tu simulación y confirmará las opciones disponibles de acuerdo con tu documentación.</p></div></div>
+
+<footer class="footer-principal">
+    <div class="contenedor footer-grid">
+        <div>
+            <strong class="footer-marca">Créditos IMSS</strong>
+            <p>Asesoría personalizada para pensionados IMSS Ley 73.</p>
+        </div>
+        <div>
+            <h2>Servicios</h2>
+            <a href="../credito-nuevo/">Crédito nuevo</a>
+            <a href="../renovacion/">Renovación</a>
+            <a href="../mejora-de-credito/">Mejora de crédito</a>
+        </div>
+        <div>
+            <h2>Información</h2>
+            <a href="../requisitos/">Requisitos</a>
+            <a href="../preguntas-frecuentes/">Preguntas frecuentes</a>
+            <a href="../contacto/">Contacto</a>
+        </div>
+        <div>
+            <h2>Simulación</h2>
+            <p>Conoce una estimación inicial sin costo.</p>
+            <a class="footer-cta" href="../simulador/">Abrir simulador</a>
+        </div>
+    </div>
+    <div class="footer-inferior">
+        <p>© <span id="anioActual"></span> Daniel Pimentel. La simulación es informativa y no garantiza aprobación.</p>
+    </div>
+</footer>
+<a href="https://wa.me/525518417167?text=Hola,%20vengo%20del%20sitio%20web%20y%20quiero%20información%20sobre%20un%20crédito%20para%20pensionados." class="whatsapp-flotante" target="_blank" rel="noopener" aria-label="Hablar por WhatsApp con Daniel Pimentel">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-texto"><strong>Hablar por WhatsApp</strong><small>Respuesta personalizada</small></span>
+</a>
+<div class="chatbot" id="chatbot">
+    <button type="button" class="chatbot-boton" id="abrirChatbot" aria-label="Abrir asistente virtual" aria-expanded="false">
+        <i class="fa-solid fa-comments"></i><span class="chatbot-notificacion" id="chatbotNotificacion">1</span>
+    </button>
+    <button type="button" class="chatbot-invitacion" id="chatbotInvitacion"><strong>¿Quieres saber cuánto te prestamos?</strong><span>Pregunta sin compromiso</span></button>
+    <div class="chatbot-ventana oculto" id="chatbotVentana" role="dialog" aria-label="Asistente virtual para créditos IMSS">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="chatbot-identidad"><strong>Asistente de Daniel</strong><span><i class="fa-solid fa-circle"></i> En línea</span></div>
+            <button type="button" class="chatbot-cerrar" id="cerrarChatbot" aria-label="Cerrar asistente virtual"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="chatbot-mensajes" id="chatbotMensajes" aria-live="polite">
+            <div class="mensaje-bot"><div class="mensaje-avatar"><i class="fa-solid fa-user-tie"></i></div><div class="mensaje-contenido"><p>Hola 👋 Soy el asistente virtual de Daniel Pimentel.</p><p>Puedo ayudarte con requisitos, renovación, documentos, simulación, seguridad y proceso del crédito.</p><small>Selecciona una pregunta rápida o escribe tu duda.</small></div></div>
+        </div>
+        <div class="chatbot-escribiendo oculto" id="chatbotEscribiendo"><span></span><span></span><span></span><small>El asistente está escribiendo</small></div>
+        <div class="chatbot-preguntas-rapidas"><p>Preguntas rápidas</p><div class="chatbot-opciones">
+            <button type="button" data-pregunta="¿Qué requisitos necesito?"><i class="fa-solid fa-clipboard-check"></i> Requisitos</button>
+            <button type="button" data-pregunta="¿Puedo renovar mi crédito?"><i class="fa-solid fa-rotate"></i> Renovación</button>
+            <button type="button" data-pregunta="¿Qué documentos necesito?"><i class="fa-solid fa-file-lines"></i> Documentos</button>
+            <button type="button" data-pregunta="¿Cómo funciona la simulación?"><i class="fa-solid fa-calculator"></i> Simulación</button>
+            <button type="button" data-pregunta="¿Cuánto tarda el proceso?"><i class="fa-solid fa-clock"></i> Tiempo</button>
+            <button type="button" data-pregunta="¿Es seguro el trámite?"><i class="fa-solid fa-shield-halved"></i> Seguridad</button>
+        </div></div>
+        <form class="chatbot-formulario" id="chatbotFormulario"><label for="chatbotPregunta" class="sr-only">Escribe tu pregunta</label><textarea id="chatbotPregunta" rows="1" maxlength="350" placeholder="Escribe tu pregunta..." autocomplete="off" required></textarea><button type="submit" aria-label="Enviar pregunta"><i class="fa-solid fa-paper-plane"></i></button></form>
+        <a class="chatbot-whatsapp" id="chatbotWhatsapp" href="https://wa.me/525518417167?text=Hola,%20vengo%20del%20sitio%20web%20y%20quiero%20asesoría%20personalizada." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i><span><strong>Hablar con Daniel</strong><small>Asesoría personalizada por WhatsApp</small></span></a>
+        <p class="chatbot-aviso">El asistente brinda información general. La aprobación y condiciones dependen de la financiera y de la revisión de cada caso.</p>
+    </div>
+</div><script src="../app.js"></script><script src="../formulario.js"></script><script src="../simulador.js"></script><script src="../chatbot.js"></script></body></html>

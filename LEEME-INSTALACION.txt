@@ -1,0 +1,39 @@
+CRÉDITOS IMSS — ARQUITECTURA MULTIPÁGINA V1
+
+CONTENIDO
+- index.html: página principal corta tipo hub.
+- simulador/: formulario y simulador.
+- requisitos/: requisitos generales.
+- credito-nuevo/: página específica para campañas de crédito nuevo.
+- renovacion/: página específica para campañas de renovación.
+- mejora-de-credito/: página para revisión de alternativas.
+- preguntas-frecuentes/: FAQ independiente.
+- contacto/: contacto directo.
+- sitemap.xml y robots.txt: base SEO para GitHub Pages.
+
+IMPORTANTE AL INSTALAR
+1. Haz una copia de tu carpeta actual.
+2. Conserva en la raíz estas imágenes que ya tienes:
+   hero.jpg
+   multiva.png
+   inbursa.png
+   BANCREA.PNG
+   pensionado.png (puede conservarse aunque esta V1 no la usa)
+3. Copia todo el contenido de esta carpeta dentro de tu proyecto.
+4. Abre index.html con Live Server.
+5. Prueba /simulador/ y realiza una simulación completa.
+
+CAMBIOS DEL SIMULADOR
+- Monto mínimo: $6,000.
+- Monto máximo: $600,000.
+- Edad mínima: 60.
+- Edad máxima: 74.
+- El campo acepta cantidades exactas como 10,114 porque usa step="1".
+- Los errores aparecen debajo del campo, sin alertas del navegador.
+
+RUTAS DE GITHUB PAGES
+La estructura está preparada para:
+https://emc-lab.github.io/cot-credito-imssley73/
+
+Cuando uses un dominio propio habrá que actualizar los enlaces canonical,
+sitemap.xml y robots.txt.
