@@ -1218,12 +1218,35 @@ FORMULARIO Y SIMULADOR
     accent-color:#0b5db4;
 }
 
+/*=============================
+MENSAJES DE ERROR
+=============================*/
+
 .mensaje-error{
+
     display:block;
-    min-height:18px;
-    color:#c93636;
-    font-size:13px;
+    min-height:22px;
+
     margin-top:6px;
+
+    color:#d93025;
+
+    font-size:.90rem;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.input-error{
+
+    border:2px solid #d93025 !important;
+
+    background:#fff5f5;
+
+    box-shadow:0 0 0 4px rgba(217,48,37,.12);
+
 }
 
 .campo-error{
