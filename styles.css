@@ -3777,3 +3777,104 @@ CONFETI DE RESULTADOS
     z-index:100010;
     pointer-events:none;
 }
+/* ==========================================
+   ENCABEZADO COMPACTO EN CELULAR
+========================================== */
+
+@media (max-width: 768px) {
+
+    /* Encabezado general */
+    .header,
+    header {
+        position: static;
+        width: 100%;
+    }
+
+    /* Contenedor interior del menú */
+    .navbar,
+    .nav-contenedor,
+    .header-contenedor {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 18px;
+    }
+
+    /* Nombre del sitio */
+    .logo,
+    .marca,
+    .navbar-logo {
+        margin: 0;
+        font-size: 25px;
+        line-height: 1.1;
+    }
+
+    /* Navegación en una sola línea */
+    .nav-links,
+    .menu,
+    nav ul {
+        grid-column: 1 / -1;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+
+        width: 100%;
+        margin: 4px 0 0;
+        padding: 3px 0 6px;
+
+        overflow-x: auto;
+        white-space: nowrap;
+
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar,
+    .menu::-webkit-scrollbar,
+    nav ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links li,
+    .menu li,
+    nav ul li {
+        flex: 0 0 auto;
+        margin: 0;
+    }
+
+    .nav-links a,
+    .menu a,
+    nav ul li a {
+        display: block;
+        padding: 9px 13px;
+
+        border-radius: 30px;
+
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+
+        background: #f3f7fc;
+        color: #0b376b;
+    }
+
+    /* Botón superior de WhatsApp */
+    .btn-whatsapp-header,
+    .btn-whatsapp {
+        margin: 0;
+        padding: 11px 15px;
+        min-height: auto;
+
+        border-radius: 10px;
+
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    /* Ajuste del destino del formulario */
+    #formulario {
+        scroll-margin-top: 20px;
+    }
+}
