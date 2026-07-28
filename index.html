@@ -232,23 +232,30 @@ FORMULARIO DE CAPTACIÓN Y SIMULADOR
             </div>
 
             <form id="formLead" novalidate>
-                <div class="campo-formulario">
-                    <label for="nombre">Nombre completo *</label>
-                    <div class="campo-icono">
-                        <i class="fa-solid fa-user"></i>
-                       <input type="number" id="montoDeseado" placeholder="Ej. 50,000"
-                        >
-                        <div class="campo-formulario">
+              <div class="campo-formulario">
 
-    <label for="montoDeseado">¿Cuánto dinero necesitas?</label>
+    <label for="nombreCompleto">
+        Nombre completo *
+    </label>
 
-    <input
-        type="number"
-        id="montoDeseado"
-        placeholder="Ej. 50,000"
-    >
+    <div class="campo-icono">
 
-    <small class="mensaje-error" id="errorMonto"></small>
+
+        <input
+            type="text"
+            id="nombreCompleto"
+            name="nombreCompleto"
+            placeholder="Escribe tu nombre completo"
+            autocomplete="name"
+            required
+        >
+
+    </div>
+
+    <small
+        class="mensaje-error"
+        id="errorNombre"
+    ></small>
 
 </div>
                     <small class="mensaje-error" id="errorNombre"></small>
@@ -340,9 +347,11 @@ FORMULARIO DE CAPTACIÓN Y SIMULADOR
             </div>
 
             <form id="formSimulador">
-               <div class="campo-formulario campo-completo">
+              <div class="campo-formulario campo-completo">
 
-    <label for="montoDeseado">¿Cuánto dinero necesitas?</label>
+    <label for="montoDeseado">
+        ¿Cuánto dinero necesitas?
+    </label>
 
     <div class="campo-moneda">
 
@@ -351,12 +360,21 @@ FORMULARIO DE CAPTACIÓN Y SIMULADOR
         <input
             type="number"
             id="montoDeseado"
-            placeholder="Ej. 50,000"
+            name="montoDeseado"
+            placeholder="Ejemplo: 50,000"
             value="50000"
             step="1000"
+            inputmode="numeric"
         >
 
     </div>
+
+    <small
+        class="mensaje-error"
+        id="errorMonto"
+    ></small>
+
+</div>
 
     <small class="mensaje-error" id="errorMonto"></small>
 
