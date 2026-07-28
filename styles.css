@@ -3881,8 +3881,94 @@ CONFETI DE RESULTADOS
 html {
     scroll-behavior: smooth;
 }
+/* ==========================================
+CORRECCIÓN FINAL DEL MENÚ EN CELULAR
+========================================== */
 
+@media (max-width: 768px) {
+
+    /* Contenedor del menú */
+    .nav-links,
+    .menu,
+    nav ul {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+
+        margin: 8px 0 0;
+        padding: 4px 16px 8px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        white-space: nowrap;
+        scroll-padding-left: 16px;
+
+        box-sizing: border-box;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar,
+    .menu::-webkit-scrollbar,
+    nav ul::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Evita que el primer enlace se corte */
+    .nav-links li:first-child,
+    .menu li:first-child,
+    nav ul li:first-child {
+        margin-left: 0;
+    }
+
+    .nav-links li:last-child,
+    .menu li:last-child,
+    nav ul li:last-child {
+        padding-right: 16px;
+    }
+
+    /* Todos los botones del menú iguales */
+    .nav-links a,
+    .menu a,
+    nav ul li a,
+    nav a[href="#formulario"] {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+
+        flex: 0 0 auto;
+
+        min-height: 38px;
+        padding: 9px 14px !important;
+
+        border: 1px solid #dce8f7 !important;
+        border-radius: 25px !important;
+
+        background: #f3f7fc !important;
+        color: #0b376b !important;
+
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+
+        text-decoration: none !important;
+        box-shadow: 0 3px 10px rgba(11, 55, 107, 0.08);
+    }
+
+    /* Efecto al tocar */
+    .nav-links a:active,
+    .menu a:active,
+    nav ul li a:active {
+        transform: scale(0.97);
+        background: #e8f1fb !important;
+    }
+}
 #formulario {
     scroll-margin-top: 100px;
 }
+
 
