@@ -505,6 +505,7 @@ function mostrarResultadoSimulacion(
     contenedorResultado.classList.remove("oculto");
 
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
 
     document.body.classList.add(
         "modal-resultados-abierto"
@@ -742,6 +743,7 @@ document.addEventListener("DOMContentLoaded", function () {
         modalResultado.classList.add("oculto");
 
         document.body.style.overflow = "";
+        document.documentElement.style.overflow = "";
 
     }
 
