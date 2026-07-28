@@ -238,6 +238,19 @@ FORMULARIO DE CAPTACIÓN Y SIMULADOR
                         <i class="fa-solid fa-user"></i>
                        <input type="number" id="montoDeseado" placeholder="Ej. 50,000"
                         >
+                        <div class="campo-formulario">
+
+    <label for="montoDeseado">¿Cuánto dinero necesitas?</label>
+
+    <input
+        type="number"
+        id="montoDeseado"
+        placeholder="Ej. 50,000"
+    >
+
+    <small class="mensaje-error" id="errorMonto"></small>
+
+</div>
                     <small class="mensaje-error" id="errorNombre"></small>
                 </div>
 
@@ -327,23 +340,40 @@ FORMULARIO DE CAPTACIÓN Y SIMULADOR
             </div>
 
             <form id="formSimulador">
-                <div class="campo-formulario campo-completo">
-                    <label for="montoDeseado">¿Cuánto dinero necesitas?</label>
-                    <div class="campo-moneda">
-                        <span>$</span>
-                        <input type="number" id="montoDeseado"
-                            min="6000" max="650000" step="1000"
-                            value="50000" required>
-                    </div>
-                </div>
+               <div class="campo-formulario campo-completo">
 
-                <div class="doble-campo">
-                    <div class="campo-formulario">
-                        <label for="edad">Edad</label>
-                        <input type="number" id="edad"  
-                            placeholder="Ejemplo: 68">
-                    </div>
+    <label for="montoDeseado">¿Cuánto dinero necesitas?</label>
 
+    <div class="campo-moneda">
+
+        <span>$</span>
+
+        <input
+            type="number"
+            id="montoDeseado"
+            placeholder="Ej. 50,000"
+            value="50000"
+            step="1000"
+        >
+
+    </div>
+
+    <small class="mensaje-error" id="errorMonto"></small>
+
+</div>
+<div class="campo-formulario">
+
+    <label for="edad">Edad</label>
+
+    <input
+        type="number"
+        id="edad"
+        placeholder="Ejemplo: 68"
+    >
+
+    <small class="mensaje-error" id="errorEdad"></small>
+
+</div>
                     <div class="campo-formulario">
                         <label for="plazoCredito">Plazo deseado</label>
                         <select id="plazoCredito" required>
