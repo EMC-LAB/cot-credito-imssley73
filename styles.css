@@ -3765,17 +3765,18 @@ MODAL DE RESULTADOS — VERSIÓN DEFINITIVA
     }
 
 }
-/* ==================================
-CONFETI DE RESULTADOS
-=================================== */
+/* CONFETI SIEMPRE ENCIMA DEL MODAL */
 
 .canvas-confeti-resultado{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:100010;
-    pointer-events:none;
+    position:fixed !important;
+    inset:0 !important;
+
+    width:100vw !important;
+    height:100vh !important;
+
+    pointer-events:none !important;
+
+    z-index:1000001 !important;
 }
 /* ==================================================
 REPARACIÓN DEFINITIVA DEL MODAL EN CELULAR
