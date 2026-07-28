@@ -3970,5 +3970,261 @@ CORRECCIÓN FINAL DEL MENÚ EN CELULAR
 #formulario {
     scroll-margin-top: 100px;
 }
+/* ==================================================
+REPARACIÓN DEFINITIVA DEL MODAL EN CELULAR
+PEGAR AL FINAL ABSOLUTO DE styles.css
+================================================== */
 
+@media (max-width: 768px) {
 
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
+    /*
+    Capa que cubre toda la pantalla del celular
+    */
+
+    body > #resultadoSimulacion.modal-resultado {
+        position: fixed !important;
+
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+
+        inset: 0 !important;
+
+        width: 100vw !important;
+        width: 100dvw !important;
+
+        height: 100vh !important;
+        height: 100dvh !important;
+
+        min-width: 100vw !important;
+        max-width: none !important;
+
+        margin: 0 !important;
+        padding: 10px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        overflow: hidden !important;
+
+        background: rgba(1, 12, 30, 0.88) !important;
+        backdrop-filter: blur(7px);
+        -webkit-backdrop-filter: blur(7px);
+
+        transform: none !important;
+
+        box-sizing: border-box !important;
+
+        z-index: 999999 !important;
+    }
+
+    /*
+    Cuando está oculto, no debe verse nada
+    */
+
+    body > #resultadoSimulacion.modal-resultado.oculto {
+        display: none !important;
+    }
+
+    /*
+    Fondo interno del modal
+    */
+
+    body > #resultadoSimulacion .modal-resultado-fondo {
+        position: absolute !important;
+        inset: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        margin: 0 !important;
+
+        background: rgba(1, 12, 30, 0.88) !important;
+
+        z-index: 1 !important;
+    }
+
+    /*
+    Ventana azul centrada
+    */
+
+    body > #resultadoSimulacion .modal-resultado-contenido {
+        position: relative !important;
+
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+
+        width: calc(100dvw - 20px) !important;
+        min-width: 0 !important;
+        max-width: calc(100dvw - 20px) !important;
+
+        height: auto !important;
+        max-height: calc(100dvh - 20px) !important;
+
+        margin: 0 auto !important;
+        padding: 64px 14px 28px !important;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+
+        border-radius: 22px !important;
+
+        transform: none !important;
+
+        box-sizing: border-box !important;
+
+        z-index: 2 !important;
+    }
+
+    /*
+    Botón de cerrar siempre visible
+    */
+
+    body > #resultadoSimulacion .modal-resultado-cerrar {
+        position: absolute !important;
+
+        top: 12px !important;
+        right: 12px !important;
+        left: auto !important;
+
+        width: 44px !important;
+        height: 44px !important;
+
+        margin: 0 !important;
+
+        z-index: 20 !important;
+    }
+
+    /*
+    Encabezado del resultado
+    */
+
+    body > #resultadoSimulacion .resultado-encabezado {
+        width: 100% !important;
+        max-width: none !important;
+
+        margin: 0 auto 24px !important;
+        padding: 0 42px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    body > #resultadoSimulacion .resultado-encabezado h4 {
+        margin: 8px 0 0 !important;
+
+        font-size: 27px !important;
+        line-height: 1.12 !important;
+
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+    }
+
+    /*
+    Bloques internos
+    */
+
+    body > #resultadoSimulacion .resultado-bloque {
+        width: 100% !important;
+        max-width: none !important;
+
+        margin: 15px 0 0 !important;
+        padding: 16px 12px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    body > #resultadoSimulacion .resultado-bloque-titulo {
+        width: 100% !important;
+
+        display: grid !important;
+        grid-template-columns: 42px minmax(0, 1fr) !important;
+
+        gap: 10px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    body > #resultadoSimulacion .resultado-bloque-titulo h4 {
+        font-size: 21px !important;
+        line-height: 1.15 !important;
+
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+    /*
+    Tarjetas: dos columnas en celular
+    */
+
+    body > #resultadoSimulacion .resultados-grid-cuatro {
+        width: 100% !important;
+
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+        gap: 9px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    body > #resultadoSimulacion .resultado-item {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 104px !important;
+
+        padding: 12px 7px !important;
+
+        box-sizing: border-box !important;
+    }
+
+    body > #resultadoSimulacion .resultado-item span {
+        font-size: 10px !important;
+        line-height: 1.3 !important;
+    }
+
+    body > #resultadoSimulacion .resultado-item strong {
+        font-size: 17px !important;
+        line-height: 1.15 !important;
+
+        word-break: normal !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    /*
+    Botón de WhatsApp dentro del resultado
+    */
+
+    body > #resultadoSimulacion .btn-whatsapp-resultado {
+        width: 100% !important;
+        max-width: 100% !important;
+
+        min-height: 58px !important;
+
+        margin: 16px auto 8px !important;
+        padding: 13px 10px !important;
+
+        font-size: 14px !important;
+        line-height: 1.3 !important;
+
+        box-sizing: border-box !important;
+    }
+
+    /*
+    Ocultar botones flotantes mientras el modal está abierto
+    */
+
+    body.modal-resultados-abierto .chatbot,
+    body.modal-resultados-abierto .whatsapp-flotante {
+        display: none !important;
+    }
+}
