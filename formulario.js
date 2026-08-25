@@ -38,20 +38,24 @@ document.addEventListener("DOMContentLoaded", function () {
         this.value = this.value.replace(/\D/g, "").slice(0, 10);
     });
 
-    nss.addEventListener("input", function () {
-        this.value = this.value.replace(/\D/g, "").slice(0, 11);
-    });
+    if (nss) {
+        nss.addEventListener("input", function () {
+            this.value = this.value.replace(/\D/g, "").slice(0, 11);
+        });
+    }
 
     /*
     Convertir la CURP a mayúsculas
     */
 
-    curp.addEventListener("input", function () {
-        this.value = this.value
-            .toUpperCase()
-            .replace(/[^A-Z0-9]/g, "")
-            .slice(0, 18);
-    });
+    if (curp) {
+        curp.addEventListener("input", function () {
+            this.value = this.value
+                .toUpperCase()
+                .replace(/[^A-Z0-9]/g, "")
+                .slice(0, 18);
+        });
+    }
 
     formulario.addEventListener("submit", function (evento) {
 
@@ -66,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const creditoAnterior =
             document.getElementById("creditoAnterior").value;
 
-        const curpValor = curp.value.trim();
-        const nssValor = nss.value.trim();
+        const curpValor = curp ? curp.value.trim() : "";
+        const nssValor = nss ? nss.value.trim() : "";
         const privacidad = document.getElementById("privacidad").checked;
 
         let formularioValido = true;
@@ -82,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formularioValido = false;
         }
 
-        if (!validarCorreo(correo)) {
+        if (correo && !validarCorreo(correo)) {
             mostrarError(
                 "correo",
                 "errorCorreo",

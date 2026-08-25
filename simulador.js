@@ -16,7 +16,7 @@ const CONFIGURACION_CREDITO = {
     diasDelAno: 360,
 
     // Monto máximo permitido
-    topeMaximoCredito: 600000,
+    topeMaximoCredito: 650000,
 
     // La capacidad mensual equivale al 30% de la pensión
     porcentajeMaximoDescuento: 0.30,
@@ -65,21 +65,15 @@ function procesarSimulacion(evento) {
     const plazo = obtenerNumero("plazoCredito");
     const pensionMensual = obtenerNumero("pensionBruta");
 
-    limpiarErroresSimulador();
-
-    const errorValidacion = validarDatosSimulador({
+    const mensajeValidacion = validarDatosSimulador({
         montoDeseado,
         edad,
         plazo,
         pensionMensual
     });
 
-    if (errorValidacion) {
-        mostrarErrorSimulador(
-            errorValidacion.campoId,
-            errorValidacion.errorId,
-            errorValidacion.mensaje
-        );
+    if (mensajeValidacion) {
+        alert(mensajeValidacion);
         return;
     }
 
@@ -325,187 +319,50 @@ function calcularPagoMensual(
         );
 
 }
+
+
 /*
 ==================================================
-VALIDAR DATOS DEL SIMULADOR
+VALIDACIONES
 ==================================================
 */
 
 function validarDatosSimulador(datos) {
 
-    const {
-        montoDeseado,
-        edad,
-        plazo,
-        pensionMensual
-    } = datos;
-
-    if (!montoDeseado) {
-        return {
-            campoId: "montoDeseado",
-            errorId: "errorMontoDeseado",
-            mensaje: "Ingresa el monto que necesitas."
-        };
+    if (
+        !datos.montoDeseado ||
+        datos.montoDeseado < 5000
+    ) {
+        return "El monto solicitado debe ser mayor a $5,000.";
     }
 
-    if (montoDeseado < 6000) {
-        return {
-            campoId: "montoDeseado",
-            errorId: "errorMontoDeseado",
-            mensaje: "El monto mínimo que puedes solicitar es de $6,000."
-        };
+    if (
+        !datos.edad ||
+        datos.edad < 40 ||
+        datos.edad > 90
+    ) {
+        return "Escribe una edad válida entre 40 y 90 años.";
     }
 
-    if (montoDeseado > 600000) {
-        return {
-            campoId: "montoDeseado",
-            errorId: "errorMontoDeseado",
-            mensaje: "El monto máximo que puedes solicitar es de $600,000."
-        };
+    if (
+        !CONFIGURACION_CREDITO.plazosPermitidos.includes(
+            datos.plazo
+        )
+    ) {
+        return "Selecciona un plazo válido.";
     }
 
-    if (!edad) {
-        return {
-            campoId: "edad",
-            errorId: "errorEdad",
-            mensaje: "Ingresa tu edad."
-        };
+    if (
+        !datos.pensionMensual ||
+        datos.pensionMensual <= 0
+    ) {
+        return "Escribe cuánto recibes de pensión al mes.";
     }
 
-    if (edad < 60) {
-        return {
-            campoId: "edad",
-            errorId: "errorEdad",
-            mensaje: "La edad mínima para solicitar un crédito es de 60 años."
-        };
-    }
-
-    if (edad > 74) {
-        return {
-            campoId: "edad",
-            errorId: "errorEdad",
-            mensaje: "La edad máxima para solicitar un crédito es de 74 años."
-        };
-    }
-
-    if (![12, 24, 36, 48, 60].includes(plazo)) {
-        return {
-            campoId: "plazoCredito",
-            errorId: "errorPlazoCredito",
-            mensaje: "Selecciona un plazo válido para continuar."
-        };
-    }
-
-    if (!pensionMensual || pensionMensual <= 0) {
-        return {
-            campoId: "pensionBruta",
-            errorId: "errorPensionBruta",
-            mensaje: "Ingresa una cantidad válida para tu pensión mensual."
-        };
-    }
-
-    return null;
+    return "";
 
 }
 
-function mostrarErrorSimulador(campoId, errorId, mensaje) {
-
-    const campo = document.getElementById(campoId);
-    const error = document.getElementById(errorId);
-
-    if (!campo || !error) {
-        return;
-    }
-
-    const contenedorMoneda = campo.closest(".campo-moneda");
-
-    if (contenedorMoneda) {
-        contenedorMoneda.classList.add("campo-error");
-    } else {
-        campo.classList.add("campo-error");
-    }
-
-    campo.setAttribute("aria-invalid", "true");
-    error.textContent = mensaje;
-    campo.focus();
-
-}
-
-function limpiarErroresSimulador() {
-
-    document
-        .querySelectorAll("#formSimulador .campo-error")
-        .forEach(function (elemento) {
-            elemento.classList.remove("campo-error");
-        });
-
-    document
-        .querySelectorAll("#formSimulador .mensaje-error")
-        .forEach(function (mensaje) {
-            mensaje.textContent = "";
-        });
-
-    document
-        .querySelectorAll("#formSimulador [aria-invalid='true']")
-        .forEach(function (campo) {
-            campo.removeAttribute("aria-invalid");
-        });
-
-}
-
-function activarLimpiezaErroresSimulador() {
-
-    const campos = [
-        "montoDeseado",
-        "edad",
-        "plazoCredito",
-        "pensionBruta"
-    ];
-
-    campos.forEach(function (campoId) {
-
-        const campo = document.getElementById(campoId);
-
-        if (!campo) {
-            return;
-        }
-
-        const evento = campo.tagName === "SELECT" ? "change" : "input";
-
-        campo.addEventListener(evento, function () {
-
-            const contenedorMoneda = campo.closest(".campo-moneda");
-
-            campo.classList.remove("campo-error");
-            campo.removeAttribute("aria-invalid");
-
-            if (contenedorMoneda) {
-                contenedorMoneda.classList.remove("campo-error");
-            }
-
-            const mapaErrores = {
-                montoDeseado: "errorMontoDeseado",
-                edad: "errorEdad",
-                plazoCredito: "errorPlazoCredito",
-                pensionBruta: "errorPensionBruta"
-            };
-
-            const error = document.getElementById(mapaErrores[campoId]);
-
-            if (error) {
-                error.textContent = "";
-            }
-
-        });
-
-    });
-
-}
-
-document.addEventListener(
-    "DOMContentLoaded",
-    activarLimpiezaErroresSimulador
-);
 
 /*
 ==================================================
@@ -648,7 +505,6 @@ function mostrarResultadoSimulacion(
     contenedorResultado.classList.remove("oculto");
 
     document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
 
     document.body.classList.add(
         "modal-resultados-abierto"
@@ -886,7 +742,6 @@ document.addEventListener("DOMContentLoaded", function () {
         modalResultado.classList.add("oculto");
 
         document.body.style.overflow = "";
-        document.documentElement.style.overflow = "";
 
     }
 
@@ -921,6 +776,20 @@ CONFETI DE RESULTADO
 */
 
 function lanzarConfetiResultado() {
+
+    /*
+    Respetamos la preferencia del usuario
+    de reducir animaciones.
+    */
+
+    if (
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    ) {
+        return;
+    }
+
     const canvas =
         document.createElement("canvas");
 
@@ -928,14 +797,7 @@ function lanzarConfetiResultado() {
         "canvas-confeti-resultado";
 
     document.body.appendChild(canvas);
-    
-canvas.style.position = "fixed";
-canvas.style.inset = "0";
-canvas.style.width = "100vw";
-canvas.style.height = "100dvh";
-canvas.style.pointerEvents = "none";
-canvas.style.zIndex = "1000001";
-    
+
     const contexto =
         canvas.getContext("2d");
 
@@ -1281,3 +1143,4 @@ function crearNotaExito(
     );
 
 }
+
