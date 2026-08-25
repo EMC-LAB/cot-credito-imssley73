@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://emc-lab.github.io/cot-credito-imssley73/sitemap.xml
