@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asistente virtual para pensionados | Pensión Clara</title>
+<meta name="description" content="Asistente de orientación para dudas de pensión IMSS Ley 73, pagos, semanas y opciones de financiamiento.">
+<meta name="author" content="Daniel Pimentel">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="top-bar"><p>✔ Atención en todo México &nbsp;&nbsp;&nbsp; ✔ Atención personalizada &nbsp;&nbsp;&nbsp; ✔ Proceso 100% seguro</p></div>
+<header>
+<a class="logo" href="index.html" aria-label="Inicio">Pensión Clara</a>
+<nav aria-label="Navegación principal"><ul><li><a href="pago-pension.html">¿Ya cayó tu pensión?</a></li><li><a href="ley-73.html">Ayuda Ley 73</a></li><li><a href="simulador.html">Simular crédito</a></li><li><a href="otros-perfiles.html">Otros perfiles</a></li><li><a class="activo-nav" href="asistente.html">Asistente</a></li></ul></nav>
+<a class="btn-header" href="https://wa.me/525518417167?text=Hola%2C%20vengo%20del%20Portal%20Pensi%C3%B3n%20Clara%20y%20quiero%20orientaci%C3%B3n." target="_blank" rel="noopener">WhatsApp</a>
+</header><main class="asistente-pagina">
+<section class="asistente-presentacion"><div class="contenedor">
+<span class="etiqueta-seccion">ASISTENTE PENSIÓN CLARA</span>
+<h1>Pregunta con confianza</h1>
+<p>Este espacio está diseñado para explicar temas de pensión y financiamiento con palabras sencillas. Si tu caso necesita revisión humana, te canaliza con Daniel.</p>
+</div></section>
+<section class="asistente-app"><div class="contenedor">
+<div class="asistente-shell">
+<div class="asistente-status"><div class="chatbot-avatar"><i class="fa-solid fa-user-tie"></i></div><div><strong>Asistente Pensión Clara</strong><span><i class="fa-solid fa-circle"></i> Disponible</span></div></div>
+<div class="asistente-mensajes" id="aiMensajes" aria-live="polite">
+<div class="mensaje-bot"><div class="mensaje-avatar"><i class="fa-solid fa-user-tie"></i></div><div class="mensaje-contenido"><p>Hola. Soy el asistente de Pensión Clara.</p><p>Puedes preguntarme sobre Ley 73, semanas cotizadas, fechas de pago, requisitos o créditos para pensionados.</p><small>No me compartas NIP, CVV, contraseñas ni códigos bancarios.</small></div></div>
+</div>
+<div class="asistente-sugerencias">
+<button data-prompt="¿Cómo sé si soy Ley 73?">¿Soy Ley 73?</button>
+<button data-prompt="¿Cuándo cae la pensión del IMSS?">Pago de pensión</button>
+<button data-prompt="¿Cómo consulto mis semanas cotizadas?">Semanas</button>
+<button data-prompt="¿Qué necesito para revisar un crédito?">Crédito</button>
+</div>
+<div id="aiEscribiendo" class="asistente-escribiendo oculto"><span></span><span></span><span></span> <small>Preparando respuesta…</small></div>
+<form class="asistente-form" id="aiForm">
+<textarea id="aiPregunta" rows="2" maxlength="700" placeholder="Escribe tu pregunta..." required></textarea>
+<button type="submit" aria-label="Enviar"><i class="fa-solid fa-paper-plane"></i></button>
+</form>
+<div class="asistente-pie">
+<span>Orientación general. Verifica trámites oficiales directamente con el IMSS.</span>
+<a href="https://wa.me/525518417167?text=Hola%2C%20estuve%20hablando%20con%20el%20asistente%20de%20Pensi%C3%B3n%20Clara%20y%20quiero%20que%20Daniel%20revise%20mi%20caso." target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Hablar con Daniel</a>
+</div>
+</div>
+</div></section>
+</main><footer class="footer-principal" id="contacto">
+<div class="contenedor footer-grid">
+<div><strong class="footer-marca">Pensión Clara</strong><p>Información y orientación para pensionados y jubilados. Las simulaciones son informativas y no representan una aprobación.</p></div>
+<div><h3>Accesos</h3><a href="pago-pension.html">¿Ya cayó tu pensión?</a><a href="ley-73.html">Centro de ayuda</a><a href="simulador.html">Simular crédito</a><a href="otros-perfiles.html">Otros perfiles</a><a href="asistente.html">Asistente virtual</a></div>
+<div><h3>Atención</h3><p>Daniel Pimentel</p><a href="https://wa.me/525518417167?text=Hola%2C%20vengo%20del%20sitio%20Pensi%C3%B3n%20Clara." target="_blank" rel="noopener">WhatsApp: 55 1841 7167</a><p>Atención en México</p></div>
+</div>
+<div class="footer-legal">Este sitio brinda orientación general y canaliza solicitudes de evaluación. No somos el IMSS ni una dependencia gubernamental.</div>
+</footer>
+<a href="https://wa.me/525518417167?text=Hola,%20vengo%20del%20sitio%20web%20y%20quiero%20orientaci%C3%B3n." class="whatsapp-flotante" target="_blank" rel="noopener" aria-label="Hablar por WhatsApp con Daniel Pimentel"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-texto"><strong>Hablar por WhatsApp</strong><small>Respuesta personalizada</small></span></a>
+<a href="asistente.html" class="asistente-flotante" aria-label="Abrir asistente virtual"><i class="fa-solid fa-comments"></i><span>Pregúntame</span></a>
+<script src="assistant.js"></script>
+</body>
+</html>

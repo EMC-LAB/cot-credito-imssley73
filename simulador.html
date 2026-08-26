@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulador de crédito para pensionados IMSS | Pensión Clara</title>
+<meta name="description" content="Simulación informativa para pensionados IMSS Ley 73 y revisión personalizada por WhatsApp.">
+<meta name="author" content="Daniel Pimentel">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="top-bar"><p>✔ Atención en todo México &nbsp;&nbsp;&nbsp; ✔ Atención personalizada &nbsp;&nbsp;&nbsp; ✔ Proceso 100% seguro</p></div>
+<header>
+<a class="logo" href="index.html" aria-label="Inicio">Pensión Clara</a>
+<nav aria-label="Navegación principal"><ul><li><a href="pago-pension.html">¿Ya cayó tu pensión?</a></li><li><a href="ley-73.html">Ayuda Ley 73</a></li><li><a class="activo-nav" href="simulador.html">Simular crédito</a></li><li><a href="otros-perfiles.html">Otros perfiles</a></li><li><a href="asistente.html">Asistente</a></li></ul></nav>
+<a class="btn-header" href="https://wa.me/525518417167?text=Hola%2C%20vengo%20del%20Portal%20Pensi%C3%B3n%20Clara%20y%20quiero%20orientaci%C3%B3n." target="_blank" rel="noopener">WhatsApp</a>
+</header><section class="pagina-hero"><div class="contenedor pagina-hero-grid">
+<div><span class="etiqueta-seccion">SIMULACIÓN DE CRÉDITO</span><h1>Revisa una opción de financiamiento</h1><p>Completa una evaluación inicial y, si deseas continuar, comparte el resultado con Daniel por WhatsApp.</p></div>
+<div class="pagina-hero-icono"><i class="fa-solid fa-calculator"></i></div>
+</div></section><section class="captacion" id="formulario">
+    <div class="contenedor captacion-grid">
+
+        <div class="captacion-info">
+            <span class="etiqueta-seccion">SIMULACIÓN SIN COSTO</span>
+            <h2>Descubre una opción de crédito para ti</h2>
+            <p>
+                Déjanos tus datos básicos para realizar una simulación inicial.
+                Si el resultado se ajusta a tu perfil, podrás enviarlo por WhatsApp para revisión personalizada.
+            </p>
+
+            <div class="captacion-ventajas">
+                <div><i class="fa-solid fa-circle-check"></i> Simulación inicial gratuita</div>
+                <div><i class="fa-solid fa-circle-check"></i> Atención por WhatsApp</div>
+                <div><i class="fa-solid fa-circle-check"></i> Información clara y sencilla</div>
+                <div><i class="fa-solid fa-circle-check"></i> Sin compromiso</div>
+            </div>
+        </div>
+
+        <div class="formulario-card" id="contenedorFormulario">
+            <div class="formulario-encabezado">
+                <span>PASO 1 DE 2</span>
+                <h3>Solicita tu simulación</h3>
+                <p>Solo pedimos datos básicos para orientarte. No compartas NIP, contraseñas ni códigos bancarios.</p>
+            </div>
+
+            <form id="formLead" novalidate>
+                <div class="campo-formulario">
+                    <label for="nombre">Nombre completo *</label>
+                    <div class="campo-icono">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="nombre" name="nombre"
+                            placeholder="Escribe tu nombre completo"
+                            autocomplete="name" required>
+                    </div>
+                    <small class="mensaje-error" id="errorNombre"></small>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="correo">Correo electrónico <span>Opcional</span></label>
+                    <div class="campo-icono">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="correo" name="correo"
+                            placeholder="ejemplo@correo.com"
+                            autocomplete="email">
+                    </div>
+                    <small class="mensaje-error" id="errorCorreo"></small>
+                </div>
+
+                <div class="campo-formulario">
+                    <label for="telefono">Teléfono o WhatsApp *</label>
+                    <div class="campo-icono">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="telefono" name="telefono"
+                            placeholder="10 dígitos" inputmode="numeric"
+                            maxlength="10" autocomplete="tel" required>
+                    </div>
+                    <small class="mensaje-error" id="errorTelefono"></small>
+                </div>
+
+                <div class="doble-campo">
+                    <div class="campo-formulario">
+                        <label for="tipoTramite">Tipo de trámite *</label>
+                        <select id="tipoTramite" name="tipoTramite" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="credito-nuevo">Crédito nuevo</option>
+                            <option value="renovacion">Renovación</option>
+                            <option value="mejora">Mejora de crédito</option>
+                        </select>
+                        <small class="mensaje-error" id="errorTramite"></small>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="creditoAnterior">¿Has tenido crédito antes? *</label>
+                        <select id="creditoAnterior" name="creditoAnterior" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="si">Sí</option>
+                            <option value="no">No</option>
+                        </select>
+                        <small class="mensaje-error" id="errorCreditoAnterior"></small>
+                    </div>
+                </div>
+<label class="aceptacion">
+                    <input type="checkbox" id="privacidad" required>
+                    <span>Acepto el uso de mis datos para recibir información y asesoría.</span>
+                </label>
+                <small class="mensaje-error" id="errorPrivacidad"></small>
+
+                <button type="submit" class="btn-formulario">
+                    Continuar y ver simulación
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+                <p class="seguridad-formulario">
+                    <i class="fa-solid fa-lock"></i>
+                    No solicitamos NIP, contraseñas ni códigos bancarios en esta etapa.
+                </p>
+            </form>
+        </div>
+
+        <div class="simulador-card oculto" id="contenedorSimulador">
+            <div class="formulario-encabezado">
+                <span>PASO 2 DE 2</span>
+                <h3 id="saludoSimulador">Realiza tu simulación</h3>
+                <p>Ingresa los siguientes datos para obtener un cálculo inicial.</p>
+            </div>
+
+            <form id="formSimulador">
+                <div class="campo-formulario campo-completo">
+                    <label for="montoDeseado">¿Cuánto dinero necesitas?</label>
+                    <div class="campo-moneda">
+                        <span>$</span>
+                        <input type="number" id="montoDeseado"
+                            min="6000" max="650000" step="1000"
+                            value="50000" required>
+                    </div>
+                </div>
+
+                <div class="doble-campo">
+                    <div class="campo-formulario">
+                        <label for="edad">Edad</label>
+                        <input type="number" id="edad" min="60" max="74"
+                            placeholder="Ejemplo: 68" required>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="plazoCredito">Plazo deseado</label>
+                        <select id="plazoCredito" required>
+                            <option value="">Selecciona el plazo</option>
+                            <option value="12">12 meses</option>
+                            <option value="24">24 meses</option>
+                            <option value="36">36 meses</option>
+                            <option value="48">48 meses</option>
+                            <option value="60">60 meses</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="campo-formulario campo-completo">
+                    <label for="pensionBruta">¿Cuánto recibes de pensión al mes?</label>
+                    <div class="campo-moneda">
+                        <span>$</span>
+                        <input type="number" id="pensionBruta"
+                            min="1000" step="100"
+                            placeholder="Ejemplo: 15000" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-formulario">
+                    Calcular simulación
+                    <i class="fa-solid fa-calculator"></i>
+                </button>
+            </form>
+        </div>
+
+    </div>
+</section><section class="comparativa">
+
+    <div class="contenedor">
+
+        <div class="titulo-seccion">
+
+            <span>COMPARATIVA</span>
+
+            <h2>¿Por qué elegir un crédito para pensionados?</h2>
+
+            <p>
+
+                Compara de manera sencilla algunas características generales
+                frente a otras opciones de financiamiento.
+
+            </p>
+
+        </div>
+
+        <div class="tabla-responsive">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Características</th>
+
+                        <th class="destacado-columna">
+
+                            Crédito Pensionados
+
+                        </th>
+
+                        <th>
+
+                            Préstamo Personal
+
+                        </th>
+
+                        <th>
+
+                            Tarjeta de Crédito
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>Tasas de interés</td>
+
+                        <td class="ok">Competitivas*</td>
+
+                        <td>Variables</td>
+
+                        <td>Generalmente más altas</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Facilidad de aprobación</td>
+
+                        <td class="ok">Alta*</td>
+
+                        <td>Media</td>
+
+                        <td>Media</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Tiempo de respuesta</td>
+
+                        <td class="ok">Rápido*</td>
+
+                        <td>Variable</td>
+
+                        <td>Depende del banco</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Descuento automático</td>
+
+                        <td class="ok">
+
+                            Sí
+
+                        </td>
+
+                        <td>No</td>
+
+                        <td>No</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Requisitos</td>
+
+                        <td class="ok">
+
+                            Sencillos*
+
+                        </td>
+
+                        <td>Más amplios</td>
+
+                        <td>Variables</td>
+
+                    </tr>
+
+                    <tr>
+
+                        <td>Atención personalizada</td>
+
+                        <td class="ok">
+
+                            Sí
+
+                        </td>
+
+                        <td>Depende</td>
+
+                        <td>No siempre</td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <p class="nota-tabla">
+
+            *Las condiciones dependen de la institución financiera y del perfil del solicitante.
+
+        </p>
+
+    </div>
+
+</section><section class="requisitos" id="requisitos">
+
+    <div class="contenedor">
+
+        <div class="titulo-seccion">
+
+            <span>REQUISITOS</span>
+
+            <h2>¿Qué necesitas para solicitar tu crédito?</h2>
+
+            <p>
+                Si cumples con estos requisitos básicos, un asesor podrá revisar
+                tu caso y orientarte sobre las opciones disponibles.
+            </p>
+
+        </div>
+
+        <div class="grid-requisitos">
+
+            <div class="requisito">
+
+                <div class="icono">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
+
+                <h3>Pensionado IMSS</h3>
+
+                <p>Ser pensionado bajo la Ley 73 del IMSS.</p>
+
+            </div>
+
+            <div class="requisito">
+
+                <div class="icono">
+
+                    <i class="fa-solid fa-wallet"></i>
+
+                </div>
+
+                <h3>Pensión activa</h3>
+
+                <p>Tener una pensión vigente y activa.</p>
+
+            </div>
+
+            <div class="requisito">
+
+                <div class="icono">
+
+                    <i class="fa-solid fa-id-card"></i>
+
+                </div>
+
+                <h3>Identificación</h3>
+
+                <p>INE o identificación oficial vigente.</p>
+
+            </div>
+
+            <div class="requisito">
+
+                <div class="icono">
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                </div>
+
+                <h3>Cuenta bancaria</h3>
+
+                <p>Cuenta donde recibes tu pensión.</p>
+
+            </div>
+
+            <div class="requisito">
+
+                <div class="icono">
+
+                    <i class="fa-solid fa-address-card"></i>
+
+                </div>
+
+                <h3>Datos personales</h3>
+
+                <p>CURP, NSS y datos básicos.</p>
+
+            </div>
+
+            <div class="requisito">
+
+                <div class="icono">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                </div>
+
+                <h3>Asesoría</h3>
+
+                <p>Un asesor revisará tu perfil sin costo.</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section><section class="beneficios" id="beneficios">
+
+    <div class="contenedor">
+
+        <div class="titulo-seccion">
+
+            <span>NUESTRAS VENTAJAS</span>
+
+            <h2>¿Por qué solicitar una revisión con nosotros?</h2>
+
+            <p>
+                Nuestro objetivo es ayudarte a encontrar la mejor alternativa
+                para tu crédito de forma rápida, clara y segura.
+            </p>
+
+        </div>
+
+        <div class="grid-beneficios">
+
+            <div class="beneficio-card">
+
+                <i class="fa-solid fa-house"></i>
+
+                <h3>Sin salir de casa</h3>
+
+                <p>
+
+                    Todo el proceso puede realizarse con apoyo de un asesor
+                    especializado.
+
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                <h3>Depósito rápido</h3>
+
+                <p>
+
+                    Dependiendo de la financiera, el proceso puede ser muy ágil.
+
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                <h3>Asesor personal</h3>
+
+                <p>
+
+                    Tendrás acompañamiento durante todo tu trámite.
+
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <i class="fa-solid fa-building-columns"></i>
+
+                <h3>Varias financieras</h3>
+
+                <p>
+
+                    Analizamos distintas opciones para ayudarte a encontrar una adecuada para tu perfil.
+
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <h3>Proceso seguro</h3>
+
+                <p>
+
+                    Atención profesional y seguimiento personalizado.
+
+                </p>
+
+            </div>
+
+            <div class="beneficio-card">
+
+                <i class="fa-solid fa-headset"></i>
+
+                <h3>Atención rápida</h3>
+
+                <p>
+
+                    Resolvemos tus dudas antes, durante y después del trámite.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section><!-- ==================================
+MODAL DE RESULTADOS
+=================================== -->
+<div class="resultado-simulacion modal-resultado oculto" id="resultadoSimulacion" role="dialog" aria-modal="true" aria-labelledby="tituloResultado">
+    <div class="modal-resultado-fondo" id="fondoResultado"></div>
+    <div class="modal-resultado-contenido">
+        <button type="button" class="modal-resultado-cerrar" id="cerrarResultado" aria-label="Cerrar resultados"><i class="fa-solid fa-xmark"></i></button>
+        <div class="resultado-encabezado"><span>RESULTADO INICIAL</span><h4 id="tituloResultado">¡Tu simulación está lista!</h4></div>
+        <div class="resultado-bloque resultado-maximo">
+            <div class="resultado-bloque-titulo"><div class="resultado-icono"><i class="fa-solid fa-arrow-trend-up"></i></div><div><span>CAPACIDAD MÁXIMA ESTIMADA</span><h4>Monto máximo estimado disponible</h4><p>Calculado utilizando como máximo el 30% de tu pensión mensual.</p></div></div>
+            <div class="resultados-grid resultados-grid-cuatro">
+                <div class="resultado-item"><span>Monto máximo estimado</span><strong id="resultadoMonto">$0</strong></div>
+                <div class="resultado-item"><span>Descuento mensual máximo</span><strong id="resultadoCapacidad">$0</strong></div>
+                <div class="resultado-item"><span>Plazo seleccionado</span><strong id="resultadoPlazoMaximo">0 meses</strong></div>
+                <div class="resultado-item"><span>Total estimado a pagar</span><strong id="resultadoTotalMaximo">$0</strong></div>
+            </div>
+        </div>
+        <div class="resultado-bloque resultado-solicitado">
+            <div class="resultado-bloque-titulo"><div class="resultado-icono"><i class="fa-solid fa-hand-holding-dollar"></i></div><div><span>TU SOLICITUD</span><h4>Simulación del monto solicitado</h4><p>Mensualidad y total estimados para el monto que ingresaste.</p></div></div>
+            <div class="resultados-grid resultados-grid-cuatro">
+                <div class="resultado-item"><span>Monto solicitado</span><strong id="resultadoSolicitado">$0</strong></div>
+                <div class="resultado-item"><span>Descuento mensual estimado</span><strong id="resultadoPago">$0</strong></div>
+                <div class="resultado-item"><span>Plazo seleccionado</span><strong id="resultadoPlazo">0 meses</strong></div>
+                <div class="resultado-item"><span>Total estimado a pagar</span><strong id="resultadoPagoTotal">$0</strong></div>
+            </div>
+        </div>
+        <div class="estado-solicitud" id="estadoSolicitud"></div>
+        <p class="nota-resultado">Esta simulación es únicamente informativa. El monto, plazo, tasa y aprobación dependen del análisis y de las condiciones de la institución financiera.</p>
+        <a href="#" class="btn-whatsapp-resultado" id="whatsappResultado" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Enviar mi simulación a Daniel para evaluación</a>
+        <p class="resultado-aviso-final">Daniel revisará personalmente tu simulación y confirmará las opciones disponibles de acuerdo con tu documentación.</p>
+    </div>
+</div><footer class="footer-principal" id="contacto">
+<div class="contenedor footer-grid">
+<div><strong class="footer-marca">Pensión Clara</strong><p>Información y orientación para pensionados y jubilados. Las simulaciones son informativas y no representan una aprobación.</p></div>
+<div><h3>Accesos</h3><a href="pago-pension.html">¿Ya cayó tu pensión?</a><a href="ley-73.html">Centro de ayuda</a><a href="simulador.html">Simular crédito</a><a href="otros-perfiles.html">Otros perfiles</a><a href="asistente.html">Asistente virtual</a></div>
+<div><h3>Atención</h3><p>Daniel Pimentel</p><a href="https://wa.me/525518417167?text=Hola%2C%20vengo%20del%20sitio%20Pensi%C3%B3n%20Clara." target="_blank" rel="noopener">WhatsApp: 55 1841 7167</a><p>Atención en México</p></div>
+</div>
+<div class="footer-legal">Este sitio brinda orientación general y canaliza solicitudes de evaluación. No somos el IMSS ni una dependencia gubernamental.</div>
+</footer>
+<a href="https://wa.me/525518417167?text=Hola,%20vengo%20del%20sitio%20web%20y%20quiero%20orientaci%C3%B3n." class="whatsapp-flotante" target="_blank" rel="noopener" aria-label="Hablar por WhatsApp con Daniel Pimentel"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-texto"><strong>Hablar por WhatsApp</strong><small>Respuesta personalizada</small></span></a>
+<a href="asistente.html" class="asistente-flotante" aria-label="Abrir asistente virtual"><i class="fa-solid fa-comments"></i><span>Pregúntame</span></a>
+<script src="app.js"></script>
+<script src="formulario.js"></script>
+<script src="simulador.js"></script>
+</body>
+</html>
